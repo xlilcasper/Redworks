@@ -1,0 +1,13 @@
+Each terminal stores it's own user account information. 
+To add accounts to a terminal, once logged in, use edit "accounts.f"
+you should see your name on line 1 and password on line 2. Each account
+is stored like so,
+
+username1
+password1
+username2
+password2
+username3
+password3
+
+Add guest accounts, or allow multiple accounts/logins on a specific terminal.

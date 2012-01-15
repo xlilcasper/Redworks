@@ -1,0 +1,23 @@
+A thunderstorm is a weather condition which takes place randomly during rain, snowfall, or dry desert storms. All changes from these weathers apply, though since lightning occurs and the light level falls to 7, thunderstorms are distinct. Even in the middle of the daytime, hostile mobs will be able to spawn. However, far fewer mobs will spawn relative to night as it is barely dark enough for them to spawn. 
+Lightning is a lethal element to the storm. It strikes randomly across the map, creating brief fires. While most are put out almost immediately by the rain, it is possible for it to ignite wood and other flammable blocks. Lightning striking uses the same sound as TNT or a Creeper exploding, or at least until the 1.8.1 update which changed the sound of a TNT explosion, as well as a few other sounds. 
+Effects: Thunderstorms are much darker than normal rain, at light level 7 during daytime. This is dark enough to spawn hostile mobs.[1] However, thunderstorms won't reduce the light levels to 0 during night. 
+Lightning creates fire where it strikes. The accompanying rain can usually put out fires before they spread. Overhangs can prevent rain from putting out lightning fires, allowing the fire to spread. If the player is playing on Peaceful or easy, no fire will be created by lightning strikes. 
+If lightning strikes a pig, it morphs into a zombie pigman.[2] 
+If lightning strikes a creeper, it becomes supercharged and has a much more powerful explosion.[3] 
+Being struck by lightning or standing near a lightning strike deals two and a half hearts of damage, not including damage from the fire. 
+If lightning manages to strike a portal frame, it will activate the portal. Conversely, if it strikes an active portal, the portal will be deactivated. 
+The player can sleep in a bed during a thunderstorm, regardless of the time of day. 
+If lightning strikes a boat, the boat will disappear without dropping anything, as opposed to two sticks and three planks. 
+If lightning strikes a dropped item, the item will disappear, the same goes to experience orbs 
+Lightning that strikes floating sand or gravel will cause it to fall. 
+Trivia: Lightning, unlike other weather, does not have an image file associated with it. Thus, it is coded directly into the game engine. 
+Lightning does not cause damage to Zombie Pigmen or Ghasts, as those mobs don't spawn in the Overworld, and there aren't any thunderstorms in The Nether. 
+Lightning can go directly through blocks to hit the ground. 
+It doesn't matter how far you are away from the lightning, you will hear it the same time as you see it. 
+You can hear thunder all the way down to the bedrock layer. 
+The new lighting system in Beta 1.8 introduced dynamic lighting effects. Each lightning strike will now briefly light up all the topmost blocks, creating a more noticeable flash. 
+Lightning cannot be viewed through water. 
+When a Creeper is hit a second time by lightning after it became supercharged, it will cause the Charged Creeper to die. 
+Forest fires made by lightning are rare unless the lightning strikes underneath a tree. 
+Bugs: In SMP, Thunderstorms and Rain storms are at the same light level.[4] 
+If you summon lightning in The End, it crashes the game. 

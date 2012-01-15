@@ -1,0 +1,160 @@
+function leftRed()
+rs.setBundledOutput('left ', rs.getBundledOutput('left') + colors.red)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.red)
+end
+function leftBlue()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.blue)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.blue)
+end
+function leftGreen()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.green)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.green)
+end
+function leftYellow()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.yellow)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.yellow)
+end
+function leftBrown()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.brown)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.brown)
+end
+function leftBlack()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.black)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.black)
+end
+function leftMagenta()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.magenta)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.magenta)
+end
+function leftPurple()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.purple)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.purple)
+end
+function leftOrange()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.orange)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.orange)
+end
+function leftCyan()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.cyan)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.cyan)
+end
+function leftPink()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.pink)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.pink)
+end
+function leftLightgray()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.lightGray)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.lightGray)
+end
+function leftGray()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.gray)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.gray)
+end
+function leftLightblue()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.lightBlue)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.lightBlue)
+end
+function leftLime()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.lime)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.lime)
+end
+function leftWhite()
+rs.setBundledOutput('left', rs.getBundledOutput('left') + colors.white)
+sleep(0.1)
+rs.setBundledOutput('left', rs.getBundledOutput('left') - colors.white)
+end
+function rightRed()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.red)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.red)
+end
+function rightBlue()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.blue)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.blue)
+end
+function rightGreen()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.green)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.green)
+end
+function rightYellow()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.yellow)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.yellow)
+end
+function rightBrown()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.brown)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.brown)
+end
+function rightBlack()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.black)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.black)
+end
+function rightMagenta()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.magenta)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.magenta)
+end
+function rightPurple()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.purple)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.purple)
+end
+function rightOrange()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.orange)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.orange)
+end
+function rightCyan()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.cyan)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.cyan)
+end
+function rightPink()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.pink)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.pink)
+end
+function rightLightgray()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.lightGray)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.lightGray)
+end
+function rightGray()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.gray)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.gray)
+end
+function rightLightblue()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.lightBlue)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.lightBlue)
+end
+function rightLime()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.lime)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.lime)
+end
+function rightWhite()
+rs.setBundledOutput('right', rs.getBundledOutput('right') + colors.white)
+sleep(0.1)
+rs.setBundledOutput('right', rs.getBundledOutput('right') - colors.white)
+end

@@ -1,0 +1,91 @@
+Wolves are a type of mob that can be allied with the player once tamed (fed bones). They are agile creatures, as they jump and run on land and swim in lakes and oceans. They will shake themselves dry when they reach the shore after a swim or if drenched by a rainstorm, or otherwise come in contact with water. Wolves are 1 block in height, 2 in length, and 1 in width (1 x 2 x 1). 
+Like almost all mobs, Wolves are vulnerable to drowning, suffocation, falling (from heights greater than 15 blocks), contact with cacti or lava, and will actively take damage from being set on fire or coming in contact with attacking hostile mobs. 
+Wolves will spawn in all difficulty levels (including peaceful), and only in Forest, Pine Forest, and Taiga biomes.
+Depending on if and how they are interacted with, wolves can be in one of three states: wild (untamed), hostile, or tamed. 
+Behavior: Wild wolves are neutral towards the player and spawn untamed in packs of 1-8, occasionally attacking nearby Sheep while roaming around. Randomly dropped blocks of Wool (especially in a Pine Forest biome) can be good indicator of their presence. Untamed wolves will tilt their head to the side to indicate their interest in a bone or porkchop held by a nearby player. 
+Hostile wolves will coordinate their attacks on a target (sheep or a player that has injured a wild wolf in the pack) and will not revert from this state once aggravated, unless you die and respawn. Aggravated wolves will attack any and all players in range. These wolves can be distinguished from their constant growling and appearance: the eyes become red and the contrast level of the fur increases, revealing dark patches of bristling hair and a mouth line raised in a slight snarl. Note that a wolf hooked with a fishing rod or hit by a thrown snowball or egg will also become hostile. 
+Tame wolves can be distinguished from wild or hostile wolves from their eyes as they change to look less aggressive (two white pixels and one black pixel), as well as a red collar-like line around their neck. Friendly wolves will also bark occasionally at any nearby players. When standing, these wolves will engage any mob the player hits with melee attacks (the notable exception being creepers). Sitting wolves will idly observe their surroundings and will not attack anything unless the player is hit, in which case they will engage the player's attacker in defense. Like their wild counterparts, tamed wolves will tilt their head to beg for a porkchop held by a nearby player. Tamed wolves will sit when you right click them. They will remain sitting unless you click them again. A glitch was encountered where if your wolf was not sitting when you logged off, it would become wild and you would have to tame it again. This problem was fixed a couple of updates after wolves were first introduced. 
+Taming:
+First, find an untamed wolf or wolf pack. Each individual wolf can be tamed by feeding (right-clicking) it bones until a puff of hearts appears and the wolf sits down. Once tamed, a wolf will not accept any more bones. It will also gain a red collar to indicate that it has been tamed. Note that the number of bones required is random - some wolves respond to a single bone while others require more to tame.[1] At the moment, there is no limit[2] on the number of wolves the player can tame. 
+Benefits: When told to sit (right-clicking), tamed wolves will remain in place while the player is free to move around. Sitting wolves will never despawn,[3] no matter how far away the player wanders, and if the player leaves the game they won't despawn either. They also will resume following the player when he/she returns and tells them to stand up again. 
+Tamed wolves (when standing) always follow the player around the Overworld, teleporting to him/her if they become too distant. They will attack any non-environmental entities that injure the player - even idle sitting wolves will stand up and descend upon an attacker to defend the player when he/she is hit by someone else or a hostile mob. When the player hits a mob with melee attacks (non-arrow),[4] tamed wolves will engage in combat with it, focusing on one target at a time and switching to another only when the first has been killed. 
+The notable exception to the rule is the Creeper. Tamed wolves will never engage a creeper even if the player hits the creeper.[5] 
+Care and Feeding: A bunch of begging wolves.A wolf's tail will rise and lower depending on its health. The exact health of an individual wolf can be determined by measuring the angle between its hind legs and tail. The angle indicates the percentage of health the wolf has (100 degrees for 100%, or 10 hearts; 90 degrees for 90%, etc.). Health can be restored by feeding wolves a cooked porkchop, a raw porkchop, steak, raw beef, cooked chicken, raw chicken and rotten flesh (feed them by right-clicking while holding the meat). Rotten flesh does not seem to make wolves sick, making it a viable and easy source of food for them. A cooked porkchop will restore 4 food points to the player, but cooked meat gives no added benefit when eaten by wolves, so they can be satisfied with fresh meat from wandering pigs, cows and chickens on-the-go. 
+As of Beta 1.9 Pre-release 4, Splash Potions of healing or regeneration can be thrown at wolves to heal them. 
+Since wild wolves have a maximum health of 4 hearts, their tails will always remain significantly lower than those of tamed wolves, which gain 100% health (10 hearts) instantly upon being successfully tamed. 
+Attempting to feed a tamed wolf when its health is full will start the eating animation instead. 
+Movement: In general, tame wolves follow the player in a wandering manner (as opposed to walking directly towards him/her) to avoid falling, but will continue to jump and move around even if the player stands still. 
+Wolves have extreme difficulty walking through open doors. The best workaround is to install "doggie doors" by destroying a single block to the bottom left/right of a Door, or to use double doors. 
+Tamed wolves will attempt to walk through obstacles to attack mobs, but will not find a way around them. 
+Because they are continually moving, wolves can receive fall damage when the player travels near cliff edges or gradual descents. 
+They will not actively avoid lava, cacti, fire, falling, or traps - even if the player navigates around these hazards, tamed wolves can be killed or severely injured en route to him/her.[6] 
+Wolves will stand up and follow the player if pushed into water or injured while sitting. 
+Wolves can navigate and turn around in 1 x 1 horizontal tunnels. 
+Teleportation: Tamed wolves will teleport to the player if a large enough gap (roughly a 20 x 20 x 10 block area) is created between them and the player with a few exceptions. 
+Teleporting resets the focus of a tamed wolf, so if a wolf is attacking a mob and teleports beside a player, it will resume following him/her. 
+It is possible for tamed wolves to teleport to an inaccessible location (e.g. under ice) and be injured or die of suffocation as a result. 
+A wolf will not teleport: 
+if the wolf has been ordered to sit
+if the wolf is in a moving minecart 
+if the player is swimming/boating in deep water (but they will teleport as the player approaches land or shallow one block deep water) 
+if the player is standing on ice (but they will teleport as the player approaches land) 
+if the player enters a portal and travels to the Nether (the wolves will remain in the Overworld until the player returns) 
+from unloaded chunk (if you move far enough from the wolf or into different dimension) 
+if the player is flying a certain distance above the land 
+History: Wolves were first introduced in Beta 1.4 on March 31, 2011. 
+Notch confirmed their addition after having breakfast with an idol of his (likely Peter Molyneux).[8] Jeb posted a video preview of the wolves he was working on on March 18th, 2011.
+Bugs: If an aggressive wolf is attacked by a different mob, then it becomes neutral to the player again. 
+A tamed wolf that falls far enough away from the player to teleport back may still take damage upon landing. 
+Wolves don't stand up if you are playing in offline mode if the game was saved while in online mode, as well as the reverse instance of saving while offline and playing online. However, doing the above may fix the problem.[citation needed] 
+If you carry your save data in a flash drive, and play on a computer you didn't start the world on, your wolf will not stand up at all. It may only happen on very rare occasions.[citation needed] 
+If Minecraft crashes, the number of tamed wolves you have may increase. However, some might also disappear. 
+There is a glitch that when a tamed wolf is inside a minecart (standing), if you go too far away from your wolf, the wolf will teleport to you and it will immediately fly back into the minecart, this will happen repeatedly. This can be fixed by destroying the minecart. 
+If a wolf is swimming, Minecraft will sometimes play the "shaking" sound. 
+If you tame a wolf while it's in the middle of jumping, the wolf will go into a "sitting" pose, but continue to bounce up and down indefinitely. This can be fixed by making the wolf sit. 
+Wolves can push you out of your bed, but you will still sleep. 
+In multiplayer, a player who logs in will see all sitting wolves as standing until they are removed and put back into position. 
+Tamed wolves can teleport inside transparent blocks such as slabs. This can mean they can get stuck, or not follow you. 
+It is possible to push a wolf into a block and therefore suffocate it, done by having two wolves sit, and then pushing one wolf by the other into a solid block. Wolves lose health while in the block, so make sure to be careful! 
+A rare glitch has been known to occur when you save while a tamed wolf is sitting. When you come back to the game and make it stand up, then just right after you've clicked (you need to be very quick), hold up a porkchop, and the wolf will run towards you in sitting position. 
+If a tamed wolf attacks a mob and you right-click on the wolf, it jumps towards the mob in sitting position. 
+Sitting wolves tamed before Beta 1.5_01 that are pushed into water, or that water runs over, will start to jump in place in the sitting position while they shake the water off. They will no longer be able to be told to stand, thus will continue to jump up and down in the sitting position until hit, after which will cause them to attack you until death on either side. This can be fixed by exiting the world and then reloading it again. 
+Wolves could be found in the "Shrubland" biome, which was probably a bug. 
+Trying to get a wolf to stand up if it was tame before 1.5_01 will cause it to attack you if you dealt it damage, just as a hostile wolf. However, it will still have the friendly appearance. It will begin to bounce and attack you. even if you walk away, then walk back you will be dealt damage, even if the wolf is not looking at you. 
+Tamed wolves count against the passive mob limit. In SMP, an individual player with an excessive number of tamed wolves can prevent ALL players on the server from encountering passive mobs regardless of type. (cows, chickens, pigs, etc.) 
+Sometimes, saving and quitting to the menu screen and then reloading the world immediately afterwards will cause some or all of your wolves to become wild again. 
+A wolf will attack its owner rarely if hit 3 times. 
+In SMP, a tame wolf will not beg when Raw Porkchop is held. 
+In 1.8 if you hit a non-tamed wolf, it will try to attack you but deals no damage.[citation needed] 
+In 1.8 Creative mode if you are flying, tamed wolves will not follow you. They will follow you again if you land close enough to where you left them while on the ground. However, if you land too far away they will not follow or teleport to you.[citation needed] 
+In 1.8.1 survival there is an uncommon bug that when you die, while your wolves are sitting,when you respawn and attack your wolves they will attack you, they don't run, but instead they move by sitting while jumping. 
+If a sheep spawns under a tree and is unable to move because it's head is in the leaves, wolves will lock on but not attack. They may be aiming for the head which is in the leaves, and therefore appear to look at the sheep. 
+If an untamed wolf is attacked by any mob, it will still attack the aggressor, but they won't switch to their hostile texture. 
+Trivia: Wolves appear to be based on the grey wolf. 
+If you order a wolf to attack an untamed member of its own pack, it will kill it, but turn hostile towards you. 
+If you try to use breeding on wolves, They will enter Love mode but in some cases they do not make baby wolves. 
+When a wolf attacks a big (23) slime, they simply push the slime around. 
+With 2.5 times the health and double the attack power, tamed wolves are 5 times stronger than wild ones, and can kill 4 one at a time without dying. 
+Wolves cannot go into the Nether unless hacked in and behave no differently than if they were in the normal world. 
+Wolves are the first official tameable mob in Minecraft. 
+Jeb has said that wolves may have color variations, but he "would have to run that through Notch".[12] 
+Wolves do not trample crops,[13] and they do not make step sounds.[14] 
+If a hostile mob (besides a creeper) attacks a player, the wolf will react and attack the mob to defend the player, even if the wolf was told to sit. This can be extremely useful if the player is trying to sleep and is attacked in their sleep, as it's more than likely the wolves will be beside the player at the time. 
+If you attack another player on SMP, even if PvP is off, a tamed wolf will attack the opposing player. They will continue to attack even if made to sit by the wolf's owner. 
+Similarly, if a player attacks a tamed wolf that isn't their own, then the wolf will attack. 
+If a wolf is in a downward water current, they will not float and, if not removed, will drown. 
+Wolves and Slimes are the only mobs that can be hostile to the player on peaceful mode. 
+Hostile wolves respond similarly to zombie pigmen, as attacking one will make the whole pack attack you. 
+If you attack a mob, then order a wolf to sit while it is approaching the mob, the wolf will attack the mob by bouncing toward it while sitting. 
+Wolves can teleport into transparent blocks. Therefore, it is not recommended to bring a wolf underground or near lava/fire. 
+Water breaks have no effect on wolves falling from high positions. 
+There is a glitch in which a tame sitting wolf will attack its master, still in sitting position. [citation needed] The cause is unknown, but can usually be fixed by logging out and back in, switching to "fast" graphics, or allowing the wolf to kill you and then returning to the death point. 
+Prior to 1.5, wolves continuously made whimpering noises even when they were at full health in SMP because Jeb mistakenly used client-side health instead of synced health.[15] 
+Tamed Wolves will teleport to their owner when close enough, if their owner is attacked. This will happen even if the Wolf has been ordered to sit. 
+Sitting tamed wolves that are pushed off of a ledge by anything or anyone will teleport to the owner. 
+In SMP, tamed wolves slowly move while sitting. It is not advised to put your tamed wolves on a roof as they usually fall off eventually. 
+Wolves have sound files for howling, but they aren't currently used in the game. 
+Wolves, sheared sheep, Magma Cubes, Silverfish and Villagers are currently the only five mobs that don't drop anything when killed. Sheared sheep drop one wool as of the 1.9 pre4 update when killed. 
+Wolves will remain sitting, although untamed, if a player has logged out and back in again. 
+Tamed wolves will attack villagers, if the player attacks one. 
+Wolves can spawn inside leaves. They will be stuck as long as there are leaf blocks on all sides. 
+Jeb has stated that once the AI Specialist helps in cleaning up Minecraft's AI Code, he will consider including Puppies in the game.

@@ -1,0 +1,45 @@
+--0
+--6
+--0
+input = {}
+output = {}
+extra = {}
+output[1] = "back"
+output[2] = "front"
+output[3] = "left"
+output[4] = "right"
+output[5] = "bottom"
+output[6] = "top"
+
+-- 6-way Ouput Lever
+-- Created by: Streetstar5 aka FuzzyPurp
+
+rState = false
+local rRunning = true
+
+term.clear()
+term.setCursorPos(1,2)
+print("Artificial Lever is now running.")
+print("Press T to turn ON and F to turn off")
+print("Output(s): " .. output[1] .. ", " ..output[2] .. ", " .. output[3] .. ".")
+print("Output(s): " .. output[4] .. ", " ..output[5] .. ", " .. output[6] .. ".") 
+print("\nHold Control+T to terminate.")
+
+while true do
+
+  local rEvent, param = os.pullEvent()
+  if rEvent == "key" then
+    if param == 20 then
+      rState = true
+    end
+    if param == 33 then
+      rState = false
+    end
+  end
+  rs.setOutput(output[1], rState)
+  rs.setOutput(output[2], rState)
+  rs.setOutput(output[3], rState)
+  rs.setOutput(output[4], rState)
+  rs.setOutput(output[5], rState)
+  rs.setOutput(output[6], rState)
+end

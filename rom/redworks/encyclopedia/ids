@@ -1,0 +1,949 @@
+These data values refer to the different types of blocks and items. They are used in many, many places in Minecraft. Block IDs are used to define blocks placed in the world and inventory items (including items in chests and items dropped in the world). Item IDs are only valid for items. Each inventory slot has a unique slot number. In a Beta world, Block data further defines blocks placed, describing for example the height of water or the direction a torch points. 
+Icon  Dec  Hex  Block type  
+ 00  00  Air  
+  01  01  Stone  
+  02  02  Grass  
+  03  03  Dirt  
+  04  04  Cobblestone  
+  05  05  Wooden Planks  
+  06  06  Saplings D B  
+  07  07  Bedrock  
+  08  08  Water D  
+  09  09  Stationary water D  
+  10  0A  Lava D  
+  11  0B  Stationary lava D  
+  12  0C  Sand  
+  13  0D  Gravel  
+  14  0E  Gold Ore  
+  15  0F  Iron Ore  
+  16  10  Coal Ore  
+  17  11  Wood D B  
+  18  12  Leaves D B  
+  19  13  Sponge  
+  20  14  Glass  
+  21  15  Lapis Lazuli Ore  
+  22  16  Lapis Lazuli Block  
+  23  17  Dispenser D T  
+  24  18  Sandstone  
+  25  19  Note Block T  
+  26  1A  Bed D I  
+  27  1B  Powered Rail D  
+  28  1C  Detector Rail D  
+  29  1D  Sticky Piston D  
+  30  1E  Cobweb  
+  31  1F  Tall Grass D  
+Icon  Dec  Hex  Block type  
+  32  20  Dead Bush  
+  33  21  Piston D  
+  34  22  Piston Extension D  
+  35  23  Wool D B  
+  36  24  Block moved by Piston T  
+  37  25  Dandelion  
+  38  26  Rose  
+  39  27  Brown Mushroom  
+  40  28  Red Mushroom  
+  41  29  Block of Gold  
+  42  2A  Block of Iron  
+  43  2B  Double Slabs D B  
+  44  2C  Slabs D B  
+  45  2D  Bricks  
+  46  2E  TNT  
+  47  2F  Bookshelf  
+  48  30  Moss Stone  
+  49  31  Obsidian  
+  50  32  Torch D  
+  51  33  Fire D  
+  52  34  Monster Spawner T  
+  53  35  Wooden Stairs D  
+  54  36  Chest D T  
+  55  37  Redstone Wire D I  
+  56  38  Diamond Ore  
+  57  39  Block of Diamond  
+  58  3A  Crafting Table  
+  59  3B  Wheat Seeds D  
+  60  3C  Farmland D  
+  61  3D  Furnace D T  
+  62  3E  Burning Furnace D T  
+  63  3F  Sign Post D I T  
+Icon  Dec  Hex  Block type  
+  64  40  Wooden Door D I  
+  65  41  Ladders D  
+  66  42  Rails D  
+  67  43  Cobblestone Stairs D  
+  68  44  Wall Sign D T  
+  69  45  Lever D  
+  70  46  Stone Pressure Plate D  
+  71  47  Iron Door D I  
+  72  48  Wooden Pressure Plate D  
+  73  49  Redstone Ore  
+  74  4A  Glowing Redstone Ore  
+  75  4B  Redstone Torch ("off" state) D  
+  76  4C  Redstone Torch ("on" state) D  
+  77  4D  Stone Button D  
+  78  4E  Snow D  
+  79  4F  Ice  
+  80  50  Snow Block  
+  81  51  Cactus D  
+  82  52  Clay Block  
+  83  53  Sugar Cane D I  
+  84  54  Jukebox D T  
+  85  55  Fence  
+  86  56  Pumpkin D  
+  87  57  Netherrack  
+  88  58  Soul Sand  
+  89  59  Glowstone Block  
+  90  5A  Portal  
+  91  5B  Jack-O-Lantern D  
+  92  5C  Cake Block D I  
+  93  5D  Redstone Repeater ("off" state) D I  
+  94  5E  Redstone Repeater ("on" state) D I  
+  95  5F  Locked Chest  
+Icon  Dec  Hex  Block type  
+  96  60  Trapdoor D  
+  97  61  Hidden Silverfish D  
+  98  62  Stone Bricks D B  
+  99  63  Huge Brown Mushroom D  
+  100  64  Huge Red Mushroom D  
+  101  65  Iron Bars  
+  102  66  Glass Pane  
+  103  67  Melon  
+  104  68  Pumpkin Stem D  
+  105  69  Melon Stem D  
+  106  6A  Vines D  
+  107  6B  Fence Gate D  
+  108  6C  Brick Stairs D  
+  109  6D  Stone Brick Stairs D  
+  110  6E  Mycelium  
+  111  6F  Lily Pad  
+  112  70  Nether Brick  
+  113  71  Nether Brick Fence  
+  114  72  Nether Brick Stairs D  
+  115  73  Nether Wart D I  
+  116  74  Enchantment Table T  
+  117  75  Brewing Stand D T I  
+  118  76  Cauldron D I  
+  119  77  End Portal T  
+  120  78  End Portal Frame D  
+  121  79  End Stone  
+  122  7A  Dragon Egg  
+Item IDs All items have values above 255, making it easy to separate the Block IDs from the Item IDs. Entries marked with a D require additional data to fully define the item in a Beta world. The chainmail set is currently unobtainable in Survival mode without hacking or, in multiplayer, the /give server command. It is available in Creative mode, however. The same applies to all music discs except for 13 and cat. 
+
+Icon  Dec  Hex  Item  
+ 256  100  Iron Shovel  
+ 257  101  Iron Pickaxe  
+ 258  102  Iron Axe  
+ 259  103  Flint and Steel  
+ 260  104  Red Apple  
+ 261  105  Bow  
+ 262  106  Arrow  
+ 263  107  Coal D  
+ 264  108  Diamond  
+ 265  109  Iron Ingot  
+ 266  10A  Gold Ingot  
+ 267  10B  Iron Sword  
+ 268  10C  Wooden Sword  
+ 269  10D  Wooden Shovel  
+ 270  10E  Wooden Pickaxe  
+ 271  10F  Wooden Axe  
+ 272  110  Stone Sword  
+ 273  111  Stone Shovel  
+ 274  112  Stone Pickaxe  
+ 275  113  Stone Axe  
+ 276  114  Diamond Sword  
+ 277  115  Diamond Shovel  
+ 278  116  Diamond Pickaxe  
+ 279  117  Diamond Axe  
+ 280  118  Stick  
+ 281  119  Bowl  
+ 282  11A  Mushroom Soup  
+ 283  11B  Gold Sword  
+ 284  11C  Gold Shovel  
+ 285  11D  Gold Pickaxe  
+ 286  11E  Gold Axe  
+ 287  11F  String  
+Icon  Dec  Hex  Item  
+ 288  120  Feather  
+ 289  121  Gunpowder  
+ 290  122  Wooden Hoe  
+ 291  123  Stone Hoe  
+ 292  124  Iron Hoe  
+ 293  125  Diamond Hoe  
+ 294  126  Gold Hoe  
+ 295  127  Seeds  
+ 296  128  Wheat  
+ 297  129  Bread  
+ 298  12A  Leather Cap  
+ 299  12B  Leather Tunic  
+ 300  12C  Leather Pants  
+ 301  12D  Leather Boots  
+ 302  12E  Chain Helmet  
+ 303  12F  Chain Chestplate  
+ 304  130  Chain Leggings  
+ 305  131  Chain Boots  
+ 306  132  Iron Helmet  
+ 307  133  Iron Chestplate  
+ 308  134  Iron Leggings  
+ 309  135  Iron Boots  
+ 310  136  Diamond Helmet  
+ 311  137  Diamond Chestplate  
+ 312  138  Diamond Leggings  
+ 313  139  Diamond Boots  
+ 314  13A  Gold Helmet  
+ 315  13B  Gold Chestplate  
+ 316  13C  Gold Leggings  
+ 317  13D  Gold Boots  
+ 318  13E  Flint  
+ 319  13F  Raw Porkchop  
+Icon  Dec  Hex  Item  
+ 320  140  Cooked Porkchop  
+ 321  141  Paintings  
+ 322  142  Golden Apple  
+ 323  143  Sign  
+ 324  144  Wooden door  
+ 325  145  Bucket  
+ 326  146  Water bucket  
+ 327  147  Lava bucket  
+ 328  148  Minecart  
+ 329  149  Saddle  
+ 330  14A  Iron door  
+ 331  14B  Redstone  
+ 332  14C  Snowball  
+ 333  14D  Boat  
+ 334  14E  Leather  
+ 335  14F  Milk  
+ 336  150  Clay Brick  
+ 337  151  Clay  
+ 338  152  Sugar Cane  
+ 339  153  Paper  
+ 340  154  Book  
+ 341  155  Slimeball  
+ 342  156  Minecart with Chest  
+ 343  157  Minecart with Furnace  
+ 344  158  Egg  
+ 345  159  Compass  
+ 346  15A  Fishing Rod  
+ 347  15B  Clock  
+ 348  15C  Glowstone Dust  
+ 349  15D  Raw Fish  
+ 350  15E  Cooked Fish  
+ 351  15F  Dye D  
+Icon  Dec  Hex  Item  
+ 352  160  Bone  
+ 353  161  Sugar  
+ 354  162  Cake  
+ 355  163  Bed  
+ 356  164  Redstone Repeater  
+ 357  165  Cookie  
+ 358  166  Map  
+ 359  167  Shears  
+ 360  168  Melon Slice  
+ 361  169  Pumpkin Seeds  
+ 362  16A  Melon Seeds  
+ 363  16B  Raw Beef  
+ 364  16C  Steak  
+ 365  16D  Raw Chicken  
+ 366  16E  Cooked Chicken  
+ 367  16F  Rotten Flesh  
+ 368  170  Ender Pearl  
+ 369  171  Blaze Rod  
+ 370  172  Ghast Tear  
+ 371  173  Gold Nugget  
+ 372  174  Nether Wart  
+ 373  175  Potions D  
+ 374  176  Glass Bottle  
+ 375  177  Spider Eye  
+ 376  178  Fermented Spider Eye  
+ 377  179  Blaze Powder  
+ 378  17A  Magma Cream  
+ 379  17B  Brewing Stand  
+ 380  17C  Cauldron  
+ 381  17D  Eye of Ender  
+ 382  17E  Glistering Melon  
+ 383  17F  Spawner Egg D  
+Icon  Dec  Hex  Item  
+ 2256  8D0  13 Disc  
+ 2257  8D1  Cat Disc  
+ 2258  8D2  blocks Disc  
+ 2259  8D3  chirp Disc  
+ 2260  8D4  far Disc  
+ 2261  8D5  mall Disc  
+ 2262  8D6  mellohi Disc  
+ 2263  8D7  stal Disc  
+ 2264  8D8  strad Disc  
+ 2265  8D9  ward Disc  
+ 2266  8DA  11 Disc  
+Entity IDs Icon  Dec  Hex  Entity  
+Drops  
+ 1  01  Dropped item  
+ 2  02  Experience Orb  
+Projectiles  
+ 10  0A  Shot arrow  
+ 11  0B  Thrown snowball  
+ 12  0C  Ghast fireball  
+ 13  0D  Blaze fireball  
+ 14  0E  Thrown Ender Pearl  
+ 15  0F  Thrown Eye of Ender  
+Blocks  
+ 20  14  Primed TNT  
+ 21  15  Falling block (gravel, sand)  
+Vehicles  
+ 40  28  Minecart  
+ 41  29  Boat  
+Icon  Dec  Hex  Entity  
+Hostile mobs  
+ 50  32  Creeper  
+ 51  33  Skeleton  
+ 52  34  Spider  
+ 53  35  Giant  
+ 54  36  Zombie  
+ 55  37  Slime  
+ 56  38  Ghast  
+ 57  39  Zombie Pigman  
+ 58  3A  Enderman  
+ 59  3B  Cave Spider  
+ 60  3C  Silverfish  
+ 61  3D  Blaze  
+ 62  3E  Magma Cube  
+ 63  3F  Enderdragon  
+Icon  Dec  Hex  Entity  
+Passive mobs  
+ 90  5A  Pig  
+ 91  5B  Sheep  
+ 92  5C  Cow  
+ 93  5D  Chicken  
+ 94  5E  Squid  
+ 95  5F  Wolf  
+ 96  60  Mooshroom  
+ 97  61  Snow Golem  
+NPCs  
+ 120  78  Villager  
+Other  
+ 200  C8  Ender Crystal  
+Icon  Dec  Hex  Block type  
+ 00  00  Air  
+  01  01  Stone  
+  02  02  Grass  
+  03  03  Dirt  
+  04  04  Cobblestone  
+  05  05  Wooden Planks  
+  06  06  Saplings D B  
+  07  07  Bedrock  
+  08  08  Water D  
+  09  09  Stationary water D  
+  10  0A  Lava D  
+  11  0B  Stationary lava D  
+  12  0C  Sand  
+  13  0D  Gravel  
+  14  0E  Gold Ore  
+  15  0F  Iron Ore  
+  16  10  Coal Ore  
+  17  11  Wood D B  
+  18  12  Leaves D B  
+  19  13  Sponge  
+  20  14  Glass  
+  21  15  Lapis Lazuli Ore  
+  22  16  Lapis Lazuli Block  
+  23  17  Dispenser D T  
+  24  18  Sandstone  
+  25  19  Note Block T  
+  26  1A  Bed D I  
+  27  1B  Powered Rail D  
+  28  1C  Detector Rail D  
+  29  1D  Sticky Piston D  
+  30  1E  Cobweb  
+  31  1F  Tall Grass D  
+Icon  Dec  Hex  Block type  
+  32  20  Dead Bush  
+  33  21  Piston D  
+  34  22  Piston Extension D  
+  35  23  Wool D B  
+  36  24  Block moved by Piston T  
+  37  25  Dandelion  
+  38  26  Rose  
+  39  27  Brown Mushroom  
+  40  28  Red Mushroom  
+  41  29  Block of Gold  
+  42  2A  Block of Iron  
+  43  2B  Double Slabs D B  
+  44  2C  Slabs D B  
+  45  2D  Bricks  
+  46  2E  TNT  
+  47  2F  Bookshelf  
+  48  30  Moss Stone  
+  49  31  Obsidian  
+  50  32  Torch D  
+  51  33  Fire D  
+  52  34  Monster Spawner T  
+  53  35  Wooden Stairs D  
+  54  36  Chest D T  
+  55  37  Redstone Wire D I  
+  56  38  Diamond Ore  
+  57  39  Block of Diamond  
+  58  3A  Crafting Table  
+  59  3B  Wheat Seeds D  
+  60  3C  Farmland D  
+  61  3D  Furnace D T  
+  62  3E  Burning Furnace D T  
+  63  3F  Sign Post D I T  
+Icon  Dec  Hex  Block type  
+  64  40  Wooden Door D I  
+  65  41  Ladders D  
+  66  42  Rails D  
+  67  43  Cobblestone Stairs D  
+  68  44  Wall Sign D T  
+  69  45  Lever D  
+  70  46  Stone Pressure Plate D  
+  71  47  Iron Door D I  
+  72  48  Wooden Pressure Plate D  
+  73  49  Redstone Ore  
+  74  4A  Glowing Redstone Ore  
+  75  4B  Redstone Torch ("off" state) D  
+  76  4C  Redstone Torch ("on" state) D  
+  77  4D  Stone Button D  
+  78  4E  Snow D  
+  79  4F  Ice  
+  80  50  Snow Block  
+  81  51  Cactus D  
+  82  52  Clay Block  
+  83  53  Sugar Cane D I  
+  84  54  Jukebox D T  
+  85  55  Fence  
+  86  56  Pumpkin D  
+  87  57  Netherrack  
+  88  58  Soul Sand  
+  89  59  Glowstone Block  
+  90  5A  Portal  
+  91  5B  Jack-O-Lantern D  
+  92  5C  Cake Block D I  
+  93  5D  Redstone Repeater ("off" state) D I  
+  94  5E  Redstone Repeater ("on" state) D I  
+  95  5F  Locked Chest  
+Icon  Dec  Hex  Block type  
+  96  60  Trapdoor D  
+  97  61  Hidden Silverfish D  
+  98  62  Stone Bricks D B  
+  99  63  Huge Brown Mushroom D  
+  100  64  Huge Red Mushroom D  
+  101  65  Iron Bars  
+  102  66  Glass Pane  
+  103  67  Melon  
+  104  68  Pumpkin Stem D  
+  105  69  Melon Stem D  
+  106  6A  Vines D  
+  107  6B  Fence Gate D  
+  108  6C  Brick Stairs D  
+  109  6D  Stone Brick Stairs D  
+  110  6E  Mycelium  
+  111  6F  Lily Pad  
+  112  70  Nether Brick  
+  113  71  Nether Brick Fence  
+  114  72  Nether Brick Stairs D  
+  115  73  Nether Wart D I  
+  116  74  Enchantment Table T  
+  117  75  Brewing Stand D T I  
+  118  76  Cauldron D I  
+  119  77  End Portal T  
+  120  78  End Portal Frame D  
+  121  79  End Stone  
+  122  7A  Dragon Egg  
+Item IDs All items have values above 255, making it easy to separate the Block IDs from the Item IDs. Entries marked with a D require additional data to fully define the item in a Beta world. The chainmail set is currently unobtainable in Survival mode without hacking or, in multiplayer, the /give server command. It is available in Creative mode, however. The same applies to all music discs except for 13 and cat. 
+
+Icon  Dec  Hex  Item  
+ 256  100  Iron Shovel  
+ 257  101  Iron Pickaxe  
+ 258  102  Iron Axe  
+ 259  103  Flint and Steel  
+ 260  104  Red Apple  
+ 261  105  Bow  
+ 262  106  Arrow  
+ 263  107  Coal D  
+ 264  108  Diamond  
+ 265  109  Iron Ingot  
+ 266  10A  Gold Ingot  
+ 267  10B  Iron Sword  
+ 268  10C  Wooden Sword  
+ 269  10D  Wooden Shovel  
+ 270  10E  Wooden Pickaxe  
+ 271  10F  Wooden Axe  
+ 272  110  Stone Sword  
+ 273  111  Stone Shovel  
+ 274  112  Stone Pickaxe  
+ 275  113  Stone Axe  
+ 276  114  Diamond Sword  
+ 277  115  Diamond Shovel  
+ 278  116  Diamond Pickaxe  
+ 279  117  Diamond Axe  
+ 280  118  Stick  
+ 281  119  Bowl  
+ 282  11A  Mushroom Soup  
+ 283  11B  Gold Sword  
+ 284  11C  Gold Shovel  
+ 285  11D  Gold Pickaxe  
+ 286  11E  Gold Axe  
+ 287  11F  String  
+Icon  Dec  Hex  Item  
+ 288  120  Feather  
+ 289  121  Gunpowder  
+ 290  122  Wooden Hoe  
+ 291  123  Stone Hoe  
+ 292  124  Iron Hoe  
+ 293  125  Diamond Hoe  
+ 294  126  Gold Hoe  
+ 295  127  Seeds  
+ 296  128  Wheat  
+ 297  129  Bread  
+ 298  12A  Leather Cap  
+ 299  12B  Leather Tunic  
+ 300  12C  Leather Pants  
+ 301  12D  Leather Boots  
+ 302  12E  Chain Helmet  
+ 303  12F  Chain Chestplate  
+ 304  130  Chain Leggings  
+ 305  131  Chain Boots  
+ 306  132  Iron Helmet  
+ 307  133  Iron Chestplate  
+ 308  134  Iron Leggings  
+ 309  135  Iron Boots  
+ 310  136  Diamond Helmet  
+ 311  137  Diamond Chestplate  
+ 312  138  Diamond Leggings  
+ 313  139  Diamond Boots  
+ 314  13A  Gold Helmet  
+ 315  13B  Gold Chestplate  
+ 316  13C  Gold Leggings  
+ 317  13D  Gold Boots  
+ 318  13E  Flint  
+ 319  13F  Raw Porkchop  
+Icon  Dec  Hex  Item  
+ 320  140  Cooked Porkchop  
+ 321  141  Paintings  
+ 322  142  Golden Apple  
+ 323  143  Sign  
+ 324  144  Wooden door  
+ 325  145  Bucket  
+ 326  146  Water bucket  
+ 327  147  Lava bucket  
+ 328  148  Minecart  
+ 329  149  Saddle  
+ 330  14A  Iron door  
+ 331  14B  Redstone  
+ 332  14C  Snowball  
+ 333  14D  Boat  
+ 334  14E  Leather  
+ 335  14F  Milk  
+ 336  150  Clay Brick  
+ 337  151  Clay  
+ 338  152  Sugar Cane  
+ 339  153  Paper  
+ 340  154  Book  
+ 341  155  Slimeball  
+ 342  156  Minecart with Chest  
+ 343  157  Minecart with Furnace  
+ 344  158  Egg  
+ 345  159  Compass  
+ 346  15A  Fishing Rod  
+ 347  15B  Clock  
+ 348  15C  Glowstone Dust  
+ 349  15D  Raw Fish  
+ 350  15E  Cooked Fish  
+ 351  15F  Dye D  
+Icon  Dec  Hex  Item  
+ 352  160  Bone  
+ 353  161  Sugar  
+ 354  162  Cake  
+ 355  163  Bed  
+ 356  164  Redstone Repeater  
+ 357  165  Cookie  
+ 358  166  Map  
+ 359  167  Shears  
+ 360  168  Melon Slice  
+ 361  169  Pumpkin Seeds  
+ 362  16A  Melon Seeds  
+ 363  16B  Raw Beef  
+ 364  16C  Steak  
+ 365  16D  Raw Chicken  
+ 366  16E  Cooked Chicken  
+ 367  16F  Rotten Flesh  
+ 368  170  Ender Pearl  
+ 369  171  Blaze Rod  
+ 370  172  Ghast Tear  
+ 371  173  Gold Nugget  
+ 372  174  Nether Wart  
+ 373  175  Potions D  
+ 374  176  Glass Bottle  
+ 375  177  Spider Eye  
+ 376  178  Fermented Spider Eye  
+ 377  179  Blaze Powder  
+ 378  17A  Magma Cream  
+ 379  17B  Brewing Stand  
+ 380  17C  Cauldron  
+ 381  17D  Eye of Ender  
+ 382  17E  Glistering Melon  
+ 383  17F  Spawner Egg D  
+Icon  Dec  Hex  Item  
+ 2256  8D0  13 Disc  
+ 2257  8D1  Cat Disc  
+ 2258  8D2  blocks Disc  
+ 2259  8D3  chirp Disc  
+ 2260  8D4  far Disc  
+ 2261  8D5  mall Disc  
+ 2262  8D6  mellohi Disc  
+ 2263  8D7  stal Disc  
+ 2264  8D8  strad Disc  
+ 2265  8D9  ward Disc  
+ 2266  8DA  11 Disc  
+Entity IDs Icon  Dec  Hex  Entity  
+Drops  
+ 1  01  Dropped item  
+ 2  02  Experience Orb  
+Projectiles  
+ 10  0A  Shot arrow  
+ 11  0B  Thrown snowball  
+ 12  0C  Ghast fireball  
+ 13  0D  Blaze fireball  
+ 14  0E  Thrown Ender Pearl  
+ 15  0F  Thrown Eye of Ender  
+Blocks  
+ 20  14  Primed TNT  
+ 21  15  Falling block (gravel, sand)  
+Vehicles  
+ 40  28  Minecart  
+ 41  29  Boat  
+Icon  Dec  Hex  Entity  
+Hostile mobs  
+ 50  32  Creeper  
+ 51  33  Skeleton  
+ 52  34  Spider  
+ 53  35  Giant  
+ 54  36  Zombie  
+ 55  37  Slime  
+ 56  38  Ghast  
+ 57  39  Zombie Pigman  
+ 58  3A  Enderman  
+ 59  3B  Cave Spider  
+ 60  3C  Silverfish  
+ 61  3D  Blaze  
+ 62  3E  Magma Cube  
+ 63  3F  Enderdragon  
+Icon  Dec  Hex  Entity  
+Passive mobs  
+ 90  5A  Pig  
+ 91  5B  Sheep  
+ 92  5C  Cow  
+ 93  5D  Chicken  
+ 94  5E  Squid  
+ 95  5F  Wolf  
+ 96  60  Mooshroom  
+ 97  61  Snow Golem  
+NPCs  
+ 120  78  Villager  
+Other  
+ 200  C8  Ender Crystal  
+0x2: Facing West 
+0x3: Facing South 
+0x4: Facing North 
+Ground levers: 
+
+0x5: Lever points South when off. 
+0x6: Lever points East when off. (Note that unlike the other types of switch, this version didn't power wires around the block it was sitting on. This bug was fixed in Beta 1.6) 
+Doors The two least significant bits are the orientation of the door, that is, the corner in which its hinge is positioned: 
+
+0x0: Northwest corner 
+0x1: Northeast corner 
+0x2: Southeast corner 
+0x3: Southwest corner 
+The two bits above are flags: 
+
+0x8: If this bit is set, this is the top half of a door (else the lower half). 
+0x4: If this bit is set, the door has swung counterclockwise around its hinge. 
+For example, the bottom half of a door with its hinge on the Southwest corner, which is swung so that it is closed when viewed from the West, will have a data value of (3 | 4) = (3 + 4) = 7. 
+
+Buttons 0x8 If this bit is set, the button has been pressed. If this bit is set in a saved level, the button will remain pressed for an undefined length of time after the level is loaded. 
+Button direction: 
+
+0x1: Facing East 
+0x2: Facing West 
+0x3: Facing South 
+0x4: Facing North 
+Sign Posts 0x0: South 
+0x1: South-Southwest 
+0x2: Southwest 
+0x3: West-Southwest 
+0x4: West 
+0x5: West-Northwest 
+0x6: Northwest 
+0x7: North-Northwest 
+0x8: North 
+0x9: North-Northeast 
+0xA: Northeast 
+0xB: East-Northeast 
+0xC: East 
+0xD: East-Southeast 
+0xE: Southeast 
+0xF: South-Southeast 
+Wall Signs, Furnaces, Dispensers and Chests 0x2: Facing North 
+0x3: Facing South 
+0x4: Facing West 
+0x5: Facing East 
+Pumpkins and Jack-O-Lanterns 0x0: Facing South 
+0x1: Facing West 
+0x2: Facing North 
+0x3: Facing East 
+Pressure Plates 0x1: If this bit is set, the plate is pressed. 
+Slab and Double Slab material Icon  Value  Description  
+ 0x0  Stone Slab  
+ 0x1  Sandstone Slab  
+ 0x2  Wooden Slab  
+ 0x3  Cobblestone Slab  
+ 0x4  Brick Slab  
+ 0x5  Stone Brick Slab  
+ 0x6  Stone Slab  
+Snow  
+Heights of snow from 0-7, going from left to right0x0: Normal snowfall height 
+... 
+0x7: Full block size height 
+The height repeats for values 8-15. Note that snow does not occur naturally at other heights than 0, but can be edited or hacked in. Values 0-2 has no hitbox, values 3-7 has the same hitbox as a slab. 
+
+Cake 0x0: 0 pieces eaten 
+0x1: 1 piece eaten 
+0x2: 2 pieces eaten 
+0x3: 3 pieces eaten 
+0x4: 4 pieces eaten 
+0x5: 5 pieces eaten 
+Beds 0x0: Head is pointing South 
+0x1: Head is pointing West 
+0x2: Head is pointing North 
+0x3: Head is pointing East 
+0x4: (bit flag) - When 0, the bed is empty. When 1, the bed is occupied. 
+0x8: (bit flag) - When 0, the foot of the bed. When 1, the head of the bed. 
+Redstone Repeater Low (1st & 2nd) bits: 
+
+0x0: Facing North 
+0x1: Facing East 
+0x2: Facing South 
+0x3: Facing West 
+High (3rd & 4th) bits: 
+
+0x0: 1 tick delay 
+0x1: 2 tick delay 
+0x2: 3 tick delay 
+0x3: 4 tick delay 
+Redstone Wire 0xF is a wire placed right next to a power source (like a redstone torch). The value declines with distance until 0x0, which is a non-powered wire. The direction of the wire is not saved but calculated at runtime. 
+
+Tall Grass Icon  Value  Description  
+ 0x0  Dead shrub (identical in appearance to block Dead Bush when placed, but acts like Tall Grass)  
+ 0x1  Tall grass  
+ 0x2  Fern  
+Trapdoors 0x4 is a bit that determines whether or not the trapdoor is swung open. 0 for closed (on the ground), 1 for open (against its connecting wall). The remaining two bits describe which wall the trapdoor is attached to: 
+
+0x0: Attached to the South wall 
+0x1: Attached to the North wall 
+0x2: Attached to the East wall 
+0x3: Attached to the West wall 
+Piston The top bit (0x8) is a status bit that determines whether the piston is pushed out or not. 1 for pushed out, 0 for retracted. 
+
+The bottom three bits are a value from 0 to 5, indicating the direction of the piston (the direction the piston head is pointing) 
+
+0: Down 
+1: Up 
+2: North 
+3: South 
+4: West 
+5: East 
+Piston Extension The top bit (0x8) is a status bit that determines whether the head is sticky or not (note that the Piston Body actually has completely different block types for Sticky and Regular). 1 is sticky, 0 is regular. 
+
+The bottom three bits are a value from 0 to 5, indicating the direction of the piston (the direction the piston head is pointing). 
+
+0: Down 
+1: Up 
+2: North 
+3: South 
+4: West 
+5: East 
+Stone Brick 0: Normal 
+1: Mossy 
+2: Cracked 
+Huge brown and red mushroom Huge mushrooms consist of the same blocks throughout their structure, the data value of each block decides the texture. The default texture on all sides is porous flesh. The cap texture can be either the brown mushroom or red mushroom texture, the textures for porous and stem sides are identical. 
+
+Value  Description  Textures  
+0  Fleshy piece  Pores on all sides  
+1  Corner piece  Cap texture on top, West and North  
+2  Side piece  Cap texture on top and North  
+3  Corner piece  Cap texture on top, North and East  
+4  Side piece  Cap texture on top and West  
+5  Top piece  Cap texture on top  
+6  Side piece  Cap texture on top and East  
+7  Corner piece  Cap texture on top, South and West  
+8  Side piece  Cap texture on top and South  
+9  Corner piece  Cap texture on top, East and South  
+10  Stem piece  Stem texture on all four sides, pores on top and bottom  
+Vines Determines the face against which the vine is anchored. Note that (except for Top) these are testable as bit flags, unlike most of the other directional data for other block types. Multiple sides can contain vines. The "top" attachment is assumed to be present if data is 0 or there is solid block above. 
+
+1: South 
+2: West 
+4: North 
+8: East 
+Fence Gates 0x4 is a bit flag: 1 is open, 0 is closed. The remaining two bits determine in which direction the gate will open. 
+
+0: To the South 
+1: To the West 
+2: To the North 
+3: To the East 
+Hidden Silverfish A silverfish will hide inside a Stone, Cobblestone, or Stone Brick block, changing it into a Hidden Silverfish block. The data value tells us its appearance: 
+
+0: Stone 
+1: Cobblestone 
+2: Stone Brick 
+Potions A Glass Bottle filled with a potion. Potion type is stored in item's damage value as a 16-bit number. Potion effect, name, and other flags are encoded on bits. Effect duration itself isn't there, but can be calculated from other values. 
+
+Current meaning of bits is described below. Note that potion name overlaps with potion effect and tier. 
+
+Bit  Dec  Hex  Meaning  
+0  1  0001  Potion effect  Potion name  
+1  2  0002  
+2  4  0004  
+3  8  0008  
+4  16  0010  
+5  32  0020  Tier  
+6  64  0040  Extended duration  
+7  128  0800  (ignored)  
+8  256  0100  
+9  512  0200  
+10  1024  0400  
+11  2048  0800  
+12  4096  1000  
+13  8192  2000  
+14  16384  4000  Splash potion  
+15  32768  8000  (ignored)  
+
+To calculate damage value of potion with desired effect use the following formula: 
+
+DV = potion_effect + tier_bit + extended_bit + splash_bit
+for example: 
+
+potion with "Instant Health" effect has damage value 5 (= 5 + 0 + 0 + 0); 
+potion with extended "Slowness" effect has value 74 (= 10 + 0 + 64 + 0); 
+splash potion with tier II "Strength" effect has value 16425 (= 9 + 32 + 0 + 16384). 
+To get potion with certain name, use the following formula: 
+
+DV = potion_name + extended_bit + splash_bit
+for example: 
+
+"Splash Charming Potion" has damage value 16422 (= 38 + 0 + 16384) 
+"Potion name" bits Dec  Hex  Potion  
+0  00  Water Bottle / Mundane Potion  
+1  01  Potion of Regeneration  
+2  02  Potion of Swiftness  
+3  03  Potion of Fire Resistance  
+4  04  Potion of Poison  
+5  05  Potion of Healing  
+6  06  Clear Potion  
+7  07  Clear Potion  
+8  08  Potion of Weakness  
+9  09  Potion of Strength  
+10  0a  Potion of Slowness  
+11  0b  Diffuse Potion  
+12  0c  Potion of Harming  
+13  0d  Artless Potion  
+14  0e  Thin Potion  
+15  0f  Thin Potion  
+Dec  Hex  Potion  
+16  10  Awkward Potion  
+17  11  Potion of Regeneration  
+18  12  Potion of Swiftness  
+19  13  Potion of Fire Resistance  
+20  14  Potion of Poison  
+21  15  Potion of Healing  
+22  16  Bungling Potion  
+23  17  Bungling Potion  
+24  18  Potion of Weakness  
+25  19  Potion of Strength  
+26  1a  Potion of Slowness  
+27  1b  Smooth Potion  
+28  1c  Potion of Harming  
+29  1d  Suave Potion  
+30  1e  Debonair Potion  
+31  1f  Debonair Potion  
+Dec  Hex  Potion  
+32  20  Thick Potion  
+33  21  Potion of Regeneration II  
+34  22  Potion of Swiftness II  
+35  23  Potion of Fire Resistance  
+36  24  Potion of Poison II  
+37  25  Potion of Healing II  
+38  26  Charming Potion  
+39  27  Charming Potion  
+40  28  Potion of Weakness  
+41  29  Potion of Strength II  
+42  2a  Potion of Slowness  
+43  2b  Refined Potion  
+44  2c  Potion of Harming II  
+45  2d  Cordial Potion  
+46  2e  Sparkling Potion  
+47  2f  Sparkling Potion  
+Dec  Hex  Potion  
+48  30  Potent Potion  
+49  31  Potion of Regeneration II  
+50  32  Potion of Swiftness II  
+51  33  Potion of Fire Resistance  
+52  34  Potion of Poison II  
+53  35  Potion of Healing II  
+54  36  Rank Potion  
+55  37  Rank Potion  
+56  38  Potion of Weakness  
+57  39  Potion of Strength II  
+58  3a  Potion of Slowness  
+59  3b  Acrid Potion  
+60  3c  Potion of Harming II  
+61  3d  Gross Potion  
+62  3e  Stinky Potion  
+63  3f  Stinky Potion  
+
+Note: potion with name set to 0 is called "Water Bottle" only if no other bit is set. Otherwise, it is called "Mundane Potion". 
+
+Note: potions with splash potion bit set have additional "Splash " prefix. 
+
+"Potion effect" bits Dec  Hex  Effect  Duration  Bottles  Icon  Effect color  
+0  0  -  -    -  
+1  1  Regeneration  0:45     Pink  
+2  2  Speed  3:00     Sky blue  
+3  3  Fire Resistance  3:00     Orange  
+4  4  Poison  0:45     Green  
+5  5  Instant Health  instant    -  -  
+6  6  -  -    -  -  
+7  7  -  -    -  -  
+8  8  Weakness  1:30     Grey  
+9  9  Strength  3:00     Dark red  
+10  a  Slowness  1:30     Blue-Grey  
+11  b  -  -    -  -  
+12  c  Instant Damage  instant    -  -  
+13  d  -  -    -  -  
+14  e  -  -    -  -  
+15  f  -  -    -  -  
+"Tier" bit Dex  Hex  Meaning  
+0  0000  Tier I effect.  
+32  0020  Tier II effect. Multiply duration by 1/2.  
+
+Note: Fire Resistance, Weakness and Slowness effects have no second tier. Their strength and duration are unaffected by this bit. 
+
+"Extended duration" bit Dex  Hex  Meaning  
+0  0000  Base duration.  
+64  0040  Multiply duration by 8/3.  
+"Splash potion" bit Dex  Hex  Meaning  
+0  0000  Drinkable potion.  
+16384  4000  Splash potion. Multiply duration by 3/4.  
+Brewing Stand The bottom three bits are bit flags for which bottle slots actually contain bottles. The actual bottle contents (and the reagent at the top) are stored in a TileEntity for this block, not in the data field. 
+
+0x1: The slot pointing East 
+0x2: The slot pointing Southwest 
+0x4: The slot pointing Northwest 
+Cauldron The data value stores the amount of water kept in the cauldron, in units of glass bottles that can be filled. 
+
+0: Empty 
+1: 1/3 filled 
+2: 2/3 filled 
+3: Fully filled 
+End Portal Frame The bottom two bits determine which "side" of the whole portal frame this block is a part of. 
+
+0x4 is a bit flag: 0 is an "empty" frame block, 1 is a block with an Eye of Ender inserted 
+

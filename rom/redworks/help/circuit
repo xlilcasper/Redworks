@@ -1,0 +1,33 @@
+Custom Circuitry API is an "api" to aid a mod, that helps add a computer, into a computer game. It was originally created by Casper7526, and maintained by Streetstar5
+
+It adds a base program (ran from root) called "circuit". When you access this program it will ask you to choose the type of circuit you wish to create. It will give you the options to change the inputs and outputs and any extra data that might be needed with the circuit. It will then create a startup file with the new information automatically and ready to go the next time your computer is rebooted (or by running startup).
+
+Current Circuits:
+
+D-FlipFlop, Inverter. -converted by Casper
+
+Learn How To Code For The API:
+
+Coding is extremely simple and the only file you have to worry about is the one you wish to create inside the circuit folder. Below explains further.
+
+
+--2             - Number of Inputs (Must be 0 if none)
+--2             - Number of Outputs (Must be 0 if none)
+--2             - Number of Extras (Must be 0 if none)
+input = {}            - LEAVE ME
+output = {}   		  - LEAVE ME
+extra = {}            - LEAVE ME
+
+input[1] = "bottom" -only need as many here as you have inputs. 0 = no lines here
+input[2] = "right"
+
+output[1] = "back" -only need as many here as you have outputs. 0 = no lines here
+output[2] = "top"  
+
+extra[1] = "Number of Pulses" -only need as many here as you have extras. 0 = no lines here
+extra[2] = "Speed of Pulses"  - The name for extras is what is shown to the user, they change it to a value.
+
+----- BELOW HERE IS WHERE YOU CAN START DOING WHATEVER YOU WANT
+print ("Yep")
+print ("Test - "..input[1].." Test - "..output[1])
+print ("Yep")

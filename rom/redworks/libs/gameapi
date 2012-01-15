@@ -1,0 +1,203 @@
+term.clear()
+print [[GameAPI r4
+Press Backspace at any time to exit the game.]]
+sleep(1)
+screen = {}
+screen.width = 40
+screen.height = 15
+screen.actors = {}
+
+function round(v,int)
+	local int = (int~=nil) and int or 1
+	local n = v%int
+	
+	if n >= int/2 then
+		return (v-n)+int
+	else
+		return (v-n)
+	end
+end
+
+for y=1,screen.height do
+	local t = {}
+	for x=1,screen.width do
+		table.insert(t,' ')
+	end
+	table.insert(screen.actors,t)
+end
+
+function draw()
+	term.clear()
+	for y,v in pairs(screen.actors) do
+		local line = ''
+		for x,vv in pairs(v) do
+			line = line .. vv
+		end
+		print(line)
+	end
+end
+
+function format(actor)
+	if actor.bounded then
+		actor.x = (actor.x>1) and actor.x or 1
+		actor.x = (actor.x<screen.width) and actor.x or screen.width
+		actor.y = (actor.y>1) and actor.y or 1
+		actor.y = (actor.y<screen.height) and actor.y or screen.height
+	end
+	screen.actors[round(actor.y)][round(actor.x)] = actor.char
+	return actor
+end
+
+actor = {}
+
+function actor:new(x,y,char,b)
+	actor.x = x
+	actor.y = y
+	actor.char = char
+	actor.bounded = (b~=nil) and b or true
+	screen.actors[round(y)][round(x)] = char
+	return format(actor)
+end
+
+function actor:setPos(x,y)
+	screen.actors[actor.y][actor.x] = ' '
+	actor.x = x
+	actor.y = y
+	actor = format(actor)
+end
+
+function actor:setX(x)
+	screen.actors[actor.y][actor.x] = ' '
+	actor.x = x
+	actor = format(actor)
+end
+
+function actor:setY(y)
+	screen.actors[actor.y][actor.x] = ' '
+	actor.y = y
+	actor = format(actor)
+end
+
+function actor:addPos(x,y)
+	screen.actors[actor.y][actor.x] = ' '
+	actor.x = actor.x + x
+	actor.y = actor.y + y
+	actor = format(actor)
+end
+
+function actor:addX(x)
+	screen.actors[actor.y][actor.x] = ' '
+	actor.x = actor.x + x
+	actor = format(actor)
+end
+
+function actor:addY(y)
+	screen.actors[actor.y][actor.x] = ' '
+	actor.y = actor.y + y
+	actor = format(actor)
+end
+
+function actor:setChar(char)
+	screen.actors[actor.y][actor.x] = char
+	actor.char = char
+end
+
+function actor:destroy()
+	screen.actors[actor.y][actor.x] = ' '
+	actor = nil
+end
+
+game = {}
+game.state = 'running'
+
+function game.quit()
+	term.clear()
+	game.state = 'dead'
+end
+
+function game.start()
+	os.startTimer(1/30)
+	while game.state == 'running' do
+		local t,k = os.pullEvent()
+		if t == 'timer' then
+			draw()
+			if game.update ~= nil then game.update() end
+			os.startTimer(1/30)
+		elseif t == 'key' then
+			if k == 14 then
+				game.quit()
+			else
+				if game.key ~= nil then game.key(k) end
+			end
+		end
+	end
+end
+
+--put the code for your game down here since i can't figure out how to use "require" and "loadfile" is a bitch
+
+--[[
+Brief Explanation of Functions:
+
+actor:new(x, y, char[, bounded])
+returns a new actor at the x and y positions on the terminal
+bounded is a boolean which will determine whether or not your actor's movement is limited to the console window, true by default.
+
+actor.x
+the actor's x position
+
+actor.y
+the actor's y position
+
+actor.char
+the character representing the actor on screen
+
+actor.bounded
+whether or not the actor can go outside the screen
+
+actor:setPos(x,y)
+sets the actor's position
+**this method and other positioning methods must be used in order for the actor's position to be updated onscreen
+
+actor:addPos(x,y)
+adds to the actor's position
+
+actor:setX(n)
+sets the actor's x position to n
+
+actor:setY(n)
+sets the actor's y position to n
+
+actor:addX(n)
+adds n to the actor's x position
+
+actor:addY(n)
+adds n to the actor's y position
+
+actor:setChar(char)
+change the actor's character to char
+
+game.key(k)
+user defined, triggered when a key is pressed
+
+game.update()
+user defined, triggered when a new frame is drawn
+
+game.start()
+required for the game to start, obviously
+**any code after this function will not be ran until the game has stopped
+
+game.stop()
+quit the program
+]]
+
+--[[
+Changelog:
+
+r1:
+Released API
+
+r4:
+Added 'game:setChar()' to change an actor's characters
+Added a 'bounded' attribute if you wanted an actor to be able to go outside the screen.
+Added 'screen.width' and 'screen.height' as editable attributes to allow for custom widths and heights
+]]
