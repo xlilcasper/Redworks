@@ -54,14 +54,6 @@ function showLogo2()
 	print"  ::.:  :::    : :. :   :   : :  :   ::: ::.: : "
 end
 
-function doWelcome()
-term.clear()
-term.setCursorPos(1,1)
-print(os.version() .. " with Redworks "..redworks.version().." Terminal ID# " .. os.getComputerID())
-print("Welcome " .. redworks.getUser()..".".. " Current time is "..textutils.formatTime( os.time(), false ))
-term.setCursorPos(1,4)
-end
-
 function doLogin() --returns true if login succeeds, false if it fails
 	local sPasswdPath = "ACCOUNTS.F"
 	--check we have a login path, if not, what we enter will create the account instead of log in
