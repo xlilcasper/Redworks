@@ -1,0 +1,430 @@
+local user=""
+local locked=false
+-- functions for making read only values
+
+function version()
+	return "1.0"
+end
+
+function setUser(sUser)
+	if not locked then user=sUser end
+	locked=true
+end
+
+function getUser()
+	return user
+end
+
+function showLogo()
+	term.clear()
+	term.setCursorPos(1,1)
+	print("   " .. os.version() .. " with Redworks "..redworks.version().." Terminal ID# " .. os.getComputerID())
+	print("   _ \\            |                    |        ")
+	print("     /   -_)   _' | \\ \\  \\ /  _ \\   _| | / (_-< ")
+	print("  _|_\\ \\___| \\__,_|  \\_/\\_/ \\___/ _|  _\\_\\ ___/ ")
+	print("    Development Team at http://redworksos.com")
+end
+
+function showLogo2()
+    term.clear()
+    print"@@@@@@@  @@@@@@@@ @@@@@@@"
+	print"@@!  @@@ @@!      @@!  @@@"
+	print"@!@!!@!  @!!!:!   @!@  !@!"
+	print"!!: :!!  !!:      !!:  !!!"
+	print"::   : : : :: ::  :: :::"
+	print"@@@  @@@  @@@  @@@@@@  @@@@@@@  @@@  @@@  @@@@@@"
+	print"@@!  @@!  @@! @@!  @@@ @@!  @@@ @@!  !@@ !@@"
+	print"@!!  !!@  @!@ @!@  !@! @!@!!@!  @!@@!@!   !@@!!"
+	print" !:  !!:  !!  !!:  !!! !!: :!!  !!: :!!      !:!"
+	print"  ::.:  :::    : :. :   :   : :  :   ::: ::.: : "
+end
+
+function doLogin() --returns true if login succeeds, false if it fails
+	local sPasswdPath = "ACCOUNTS.F"
+	--check we have a login path, if not, what we enter will create the account instead of log in
+	if fs.exists( sPasswdPath ) then--Password exists so this is not the first run
+		local loginCount=0
+		while loginCount < 3 do
+			local tPasswd={}
+			local file = fs.open(sPasswdPath,"r")
+			local sLine = file:readLine()
+			while sLine do
+				for k, v in string.gmatch(sLine, "(%w+)%s(%w+)") do
+					tPasswd[k]=v
+				end
+				sLine = file:readLine()
+			end
+			file:close()
+			numItems = 0
+			for k,v in pairs(tPasswd) do
+				numItems = numItems + 1
+			end
+
+			if (numItems==0) then 
+				--no passwords, not first run, so exit with out login.
+				print(" ")
+				print("To secure this terminal use adduser username password")
+				sleep(4)
+				return "",true
+			end
+			local ux,uy,px,py=8,8,8,10
+			local size,len = 2,10
+			rawWriteLoc(ux,uy,"Username:")
+			rawWriteLoc(px,py,"Password:")
+			textBox(ux+10,uy-1,len,size,false,false,"",true)
+			textBox(px+10,py-1,len,size,false,true,"",true)
+			local enterPressed = false
+			local username,password="",""
+			while not enterPressed do
+				username, enterPressed=textBox(ux+10,uy-1,len,size,true,false,username,true)
+				password, enterPressed=textBox(px+10,py-1,len,size,true,true,"",true)
+			end
+			if (tPasswd[username]==password) then --Login ok
+				return username,true
+			else --invalid login
+				loginCount=loginCount+1
+				rawWriteLoc(ux+10,7,"Invalid login")
+			end
+		end
+		return "",false
+	else--This is the first run, ask if they want to secure this box.		
+		local iSelected, sText = selectWindow(nil,nil,"Lock Terminal",{"Yes","No"})
+		clearArea(16,6,17,7)
+		local userFocus=true
+		if (sText=="Yes") then
+			local passwordMatch=false
+			local username,password,password2="",""
+			while not passwordMatch do
+				local ux,uy=12,8
+				local px,py=ux,10
+				local size,len = 2,10
+				rawWriteLoc(ux,uy,"Username:")
+				rawWriteLoc(px,py,"Password:")
+				rawWriteLoc(px,py+2,"Re-enter:")
+				textBox(ux+10,uy-1,len,size,false,false,"xlilcasper",true)
+				textBox(px+10,py-1,len,size,false,true,"",true)
+				textBox(px+10,py+1,len,size,false,true,"",true)
+				local enterPressed = false
+				
+				while not enterPressed do
+					username, enterPressed=textBox(ux+10,uy-1,len,size,userFocus,false,username,true)
+					password, enterPressed=textBox(px+10,py-1,len,size,true,true,"",true)
+					password2, enterPressed=textBox(px+10,py+1,len,size,true,true,"",true)
+				end
+				if (password == password2) then 
+					passwordMatch = true 
+				else
+					userFocus=false
+					rawWriteLoc(ux+1,7,"Passwords do not match")
+				end
+			end
+			--Our passwords match, store them for later.
+				tPasswd={}
+				tPasswd[username]=password
+				
+				local file = io.open(sPasswdPath,"w")
+				for user,pass in pairs(tPasswd) do
+					file:write(user .. " " .. pass .."\n")
+				end
+				file:close()
+				return username,true
+		else --Do not secure
+			local file = io.open(sPasswdPath,"w")
+			file:close()
+			return "",true
+		end
+	end
+end
+
+--Helper functions
+
+--XLC (XLilCaspers) Windows libary included with permissions. Access with redworks.showWinow,redworks.textBox, redworks.selectWindow...
+function rawWriteLoc(x,y,sText)
+	term.setCursorPos(x,y)
+	term.write(sText)
+end
+
+function textBox(x,y,len,size,focus,hideChar,default,disableTerm)
+	local h=2
+	local w=len+3
+	local char=""
+	local line=""
+	if size==1 then
+		y=y
+		w=len
+		for tx=0,w do
+			rawWriteLoc(x+tx,y,"_")
+		end
+	elseif size==2 then
+		for tx=0,w do
+			rawWriteLoc(x+tx,y+2,"-")
+		end
+	else
+		for ty=0,h do
+			for tx=0,w do
+				char=" "
+				if (ty==0) or (ty==h) then --horizonal line
+					if (tx==0 or tx==w) then
+						char="+"
+					else
+						char="-"
+					end
+				elseif (ty==1) then
+					if (tx==0 or tx==w) then
+						char="|"
+					end
+				else--normal line
+					if (tx==0 or tx==w) then
+						char="|"
+					end
+				end
+			line=line..char
+			end
+			rawWriteLoc(x,y+ty,line)
+			line=""
+		end
+	end
+	
+	if (focus) then
+		if size==2 then
+			y=y+1
+			len=len+3
+		elseif size==3 then 
+			x=x+2
+			y=y+1
+		end
+		term.setCursorPos(x,y)
+		term.setCursorBlink(true)
+		sText=default or ""
+		rawWriteLoc(x,y,sText)
+		bExit = false
+		local dispText=""
+		local clearChar=" "
+		if size==1 then clearChar="_" end
+		local falt, sEvent, param = nil,nil,nil
+		while not bExit do
+			if disableTerm then
+				falt, sEvent, param = pcall(os.pullEvent)
+			else 
+				sEvent, param = os.pullEvent()
+				falt=false
+			end
+			
+			if sEvent == "key" then
+				if param == 28 then
+					return sText,true
+				elseif param==15 then
+					return sText,false
+				elseif param == 14 then
+					sText = string.sub(sText,1,string.len(sText)-1)
+				end
+			end
+			
+			if sEvent == "char" then
+				sText = sText .. param
+			end
+			
+			local dispChars=string.len(sText)
+			if dispChars > len then dispChars=len end
+			if not hideChar then
+				dispText = string.sub(sText,-len)
+			else
+				dispText=""
+				for n=1,dispChars do
+					dispText=dispText.."*"
+				end
+				dispText = string.sub(dispText,-len)
+			end
+			dispChars=string.len(dispText)
+			for n=dispChars,len do
+				dispText=dispText..clearChar
+			end
+			rawWriteLoc(x,y,dispText)
+			term.setCursorPos(x+dispChars,y)
+		end
+	else
+		return sText,true
+	end
+end
+
+function tCopy(t)
+  local u = { }
+  for k, v in pairs(t) do u[k] = v end
+  return setmetatable(u, getmetatable(t))
+end
+
+function showWindow(x,y,w,h,title,text)
+	local sTitle = title or ""
+	local sText = text or ""
+	width, height = term.getSize()
+	sTitle = string.sub(sTitle,1,w-2)
+	iTitleStart = ((w/2)-1)-((#sTitle-1)/2)
+	if (not x) then
+		x=(width-w)/2
+	end
+	if (not y) then
+		y=(height-h)/2
+	end
+	if (w > width) then w = width end
+	if (h > height) then h = height end
+	local line=""
+	local char=""
+	local curChar=1
+	local waitForLine=1
+	if (sTitle ~= "") then waitForLine = 2 end
+	for ty=0,h do
+		for tx=0,w do
+			char=" "
+			if (ty==0) or ((ty==2) and (sTitle ~= "")) or (ty==h) then --horizonal line
+				if (tx==0 or tx==w) then
+					char="+"
+				else
+					char="-"
+				end
+			elseif (ty==1) then
+				if (tx==0 or tx==w) then
+					char="|"
+				else
+					--if (tx-iTitleStart < #sTitle+1) and (tx > iTitleStart) then
+					--	char = string.sub(sTitle,tx-iTitleStart,tx-iTitleStart)
+					--end
+				end
+			else--normal line
+				if (tx==0 or tx==w) then
+					char="|"
+				end
+			end
+		line=line..char
+		end
+		rawWriteLoc(x,y+ty,line)
+		line=""
+	end
+	if (sTitle ~= "") then
+		rawWriteLoc(x+iTitleStart+1,y+1,sTitle)
+	end
+	if (sText ~= "") then
+		term.setCursorPos(x+1,y+3)
+		local wrapedText = getWrapedText(x+1,y+2,x+w-2,y+h-1,sText)
+		local offset = 0
+		if (sTitle ~= "") then offset=2 end
+		for ty=1,#wrapedText do
+			rawWriteLoc(x+1,ty+y+offset,wrapedText[ty])
+			if (ty>h-offset-2) then break end
+		end
+	end
+end
+
+function getWrapedText(sx,sy,w,h, sText )
+	local x,y = sx,sy
+	local line = ""
+	local wraped = { }
+	local function newLine()
+		table.insert(wraped,line)
+		line=""
+		x=sx
+	end
+	
+	local function storeText(text)
+		line=line..text
+		return #text
+	end
+	
+	-- Print the line with proper word wrapping
+	while string.len(sText) > 0 do
+		local whitespace = string.match( sText, "^[ \t]+" )
+		if whitespace then
+			-- Print whitespace
+			x = x + storeText(whitespace)
+			sText = string.sub( sText, string.len(whitespace) + 1 )
+		end
+		
+		local newline = string.match( sText, "^\n" )
+		if newline then
+			-- Print newlines
+			newLine()
+			sText = string.sub( sText, 2 )
+		end
+		
+		local text = string.match( sText, "^[^ \t\n]+" )
+		if text then
+			sText = string.sub( sText, string.len(text) + 1 )
+			if string.len(text) > w then
+				-- Print a multiline word				
+				while string.len( text ) > 0 do
+				if x > w then
+					newLine()
+				end
+					x = x + storeText( text )
+					text = string.sub( text, (w-x) + 2 )
+				end
+			else
+				-- Print a word normally
+				if x + string.len(text) > w then
+					newLine()
+				end
+				x = x + storeText( text )
+			end
+		end
+	end
+	newLine()
+	return wraped
+end
+
+function selectWindow(x,y,title,tOptions,iSelected)
+	local w=#title
+	local h=1
+	local selected=iSelected or 1
+	local tOptionsOrg=tCopy(tOptions)
+	local width, height = term.getSize()
+	for n=1,#tOptions do
+		tOptions[n]=" "..tOptionsOrg[n].."  "
+		if (string.len(tOptions[n])>w) then w=string.len(tOptions[n]) end		
+	end
+	w=w+2
+	local sTitle = title or ""
+	if (sTitle ~= "") then h = h + 2 end
+	h = h + #tOptions
+	tOptions[selected]="*"..tOptionsOrg[selected].."*"
+	if (not x) then
+		x=(width-w)/2
+	end
+	if (not y) then
+		y=(height-h)/2
+	end
+	showWindow(x,y,w,h,sTitle,table.concat(tOptions,"\n"))
+	
+	--loop and capture arrow keys for selecting output.
+	bExit = false
+	while not bExit do
+		event, param = os.pullEvent()
+		if event == "key" then
+			if param == 197 then --Exit on pause/break
+				bExit = true
+			elseif param == 208 then
+				tOptions[selected]=" "..tOptionsOrg[selected].."  " --Clear selection
+				selected=selected+1
+				if (selected>#tOptions) then selected=1 end
+				tOptions[selected]="*"..tOptionsOrg[selected].."*"
+				showWindow(x,y,w,h,sTitle,table.concat(tOptions,"\n"))
+			elseif param == 200 then
+				tOptions[selected]=" "..tOptionsOrg[selected].."  " --Clear selection
+				selected=selected-1
+				if (selected<1) then selected=#tOptions end
+				tOptions[selected]="*"..tOptionsOrg[selected].."*"
+				showWindow(x,y,w,h,sTitle,table.concat(tOptions,"\n"))
+			elseif param == 28 then
+				return selected,tOptionsOrg[selected]
+			end
+		end
+		
+	end
+end
+
+function clearArea(x,y,w,h,char)
+	local sChar = char or " "
+	for yy=0,h do
+		for xx=0,w do
+			rawWriteLoc(x+xx,y+yy,sChar)
+		end
+	end
+end

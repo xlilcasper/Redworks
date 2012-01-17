@@ -1,0 +1,35 @@
+Brewing is how potions and splash potions are made in Minecraft. 
+Recipes: Despite the complicated web of potions that can be brewed from other potions, to brew a specific potion from the water bottle most efficiently the options are quite simple. The following table gives the most efficient way to brew each potion without wasting extra ingredients. Cases where the order of ingredients is irrelevant or two different ingredients are interchangeable are included. The potion of weakness, the only one which can be brewed without starting with a nether wart, can still be brewed from an awkward potion if the player wishes to convert all water bottles to awkward potions in preparation for brewing. 
+Weakness > fermented spider eye 
+Weakness E > fermented spider eye and redstone (if brewed from an awkward potion the fermented spider eye must be added first) 
+Strength > nether wart > blaze powder 
+Strength E > nether wart > blaze powder > redstone 
+Strength II > nether wart > blaze powder > glowstone 
+Regeneration > nether wart > ghast tear 
+Regeneration E > nether wart > ghast tear > redstone 
+Regeneration II > nether wart > ghast tear > glowstone 
+Swiftness > nether wart > sugar 
+Swiftness E > nether wart > sugar > redstone 
+Swiftness II > nether wart > sugar > glowstone 
+Slowness > nether wart > sugar or magma cream > fermented spider eye 
+Slowness E > nether wart > sugar or magma cream > fermented spider eye > redstone 
+Health > nether wart > glistering melon 
+Health II > nether wart > glistering melon > glowstone 
+Harming > nether wart > glistering melon or spider eye > fermented spider eye 
+Harming II > nether wart > glistering melon or spider eye > fermented spider eye and glowstone 
+Poison > nether wart > spider eye 
+Poison E > nether wart > spider eye > redstone 
+Poison II > nether wart > spider eye > glowstone 
+Fire Resistance > nether wart > magma cream 
+Fire Resistance E > nether wart > magma cream > redstone 
+History: Initially, the Cauldron was where potions were brewed. Code in Beta 1.9 pre2 revealed that Potions were brewed by adding water to the Cauldron followed by certain reagents. Correctly combined reagents would confer purely beneficial potion effects, and incorrect combinations added negative effects. The system was complicated, lacked a GUI, and formed many duplicate potions (i.e. two potions that were exactly the same could be made in several different ways), so Notch and Jeb came up with a new brewing method using a Brewing Stand.[1] The Cauldron's role in brewing was relegated to being a slightly more efficient storage vessel for water. Brewing was greatly streamlined and simplified when a brewing GUI was added and most duplicate potions were removed (the total possible potions went down from 150 combinations to only 25 different potions in 31 combinations). However, this new system made some potion effects available in earlier 1.9 pre-releases inaccessible (e.g. Nausea, Blindness and Invisibility). 
+Throwable Splash Potions were introduced in Beta 1.9 Pre4 and brewed by placing gunpowder and any potion together in a brewing stand. This pre-release also introduced Glistering Melon as an alchemical reagent to replace the instant health effect conferred by the Ghast Tear, which then added the effect of regeneration instead. This version also converted certain reagents into base-secondary reagents (the Spider Eye, Glistering Melon and Blaze Powder made Mundane Potion when brewed into a water bottle in addition to their previous functions), bringing the potion total to 28 different potions in 35 combinations. 
+Trivia:Only 1 ingredient is needed to brew into up to 3 potions. These three potions do not necessarily have to be the same. 
+Upgrading effect of potion that has no time parameter (i.e. Instant Health, Harming) with glowstone dust has no downsides. 
+Upgrading a Fire Resistance Potion with redstone dust has no downsides. 
+Although Jeb said that in the 1.9 pre-release 3 there were 161 possible different potion combinations with 2,653 in the future, in the actual third pre-release only 22 different potions could be made without the use of external programs. Of those, 19 potions had one of 8 different effects. 
+The Mundane Potion made from redstone has a different metadata (64) than the mundane potion made from any other ingredient (8192). Unlike Mundane 64, Mundane 8192 can be made into a Splash Mundane Potion by adding gunpowder that is, like its base potion, without any effect. 
+There are many Potions that were left behind from 1.9 pre-releases that fill up different metadatas that otherwise cannot be brewed or obtained without a SMP server command or inventory editor. These potions include but are not limited to: Bungling Potion, Buttering Potion, Debonair Potion, Refined Potion. 
+Splash potions can be fired by Dispensers. 
+Cauldrons can be entirely circumvented from the brewing process with no ill effects, as bottles can be filled by right-clicking on a water source block. This is an improvement from cauldrons, as one does not have to replenish the source block every three bottles, or indeed at all. This, however can not be done in the Nether, where cauldrons become essential. 
+Some splash potions have the opposite effect on undead mobs such as zombies and skeletons. 

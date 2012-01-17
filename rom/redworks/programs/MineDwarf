@@ -1,0 +1,149 @@
+--Sprites
+psprite = {}
+psprite.up = '^'
+psprite.down = 'V'
+psprite.right = '>'
+psprite.left = '<'
+psprite.select = '-->'
+
+--Functions
+
+player = entity.new('Player', 5, 5, psprite.up, true, true)
+entity.addvar(player, 'num', 1)
+title = entity.new('title', 1, 1, 'MineDwarf: Beginnings', true, false)
+entity.setabs(title, true)
+debug = entity.new('Debug', 2, 2, ' ', true, false)
+entity.setabs(debug, true)
+
+commands = entity.new('Command Bar', 1, window.h, 'E: Interact', true, false)
+entity.setabs(commands, true)
+
+wall = {}
+wallnum = 1
+
+function wall.new(x,y)
+	wall[wallnum] = entity.new('Wall', x, y, '=', true, true )
+	wallnum = wallnum+1
+end
+
+room = {}
+
+function room.new(x1,y1,x2,y2)
+	write('newroom')
+	i=0
+	while i < x2-x1+1 do
+		wall.new(x1+i,y1)
+		i= i+1
+	end
+	i=0
+	while i < x2-x1+1 do
+		wall.new(x1+i,y2)
+		i= i+1
+	end
+	i=0
+	while i < y2-y1+1 do
+		if i ~= 4 then
+			wall.new(x1, y1+i)
+		end
+		i= i+1
+	end
+	i=0
+	while i < y2-y1+1 do
+		wall.new(x2, y1+i)
+		i= i+1
+	end
+end
+
+room.new(7,7,15,15)
+
+--[[||||| KEY EXECUTION |||||]]--
+function exec.key(k)
+	--Up
+	if k == 17 then
+		entity.setpos( player, 0, -1, true )
+		entity.setvar(player, 'num', entity.getvar(player, 'num') + 1 )
+		entity.setchar( player, psprite.up )
+	end
+	--Down
+	if k == 31 then
+		entity.setpos( player, 0, 1, true )
+		entity.setvar(player, 'num', entity.getvar(player, 'num') + 1 )
+		entity.setchar( player, psprite.down )
+	end
+	--Left
+	if k == 30 then
+		entity.setpos( player, -1, 0, true )
+		entity.setvar(player, 'num', entity.getvar(player, 'num') + 1 )
+		entity.setchar( player, psprite.left )
+	end
+	--Right
+	if k == 32 then
+		entity.setpos( player, 1, 0, true )
+		entity.setvar(player, 'num', entity.getvar(player, 'num') + 1 )
+		entity.setchar( player, psprite.right )
+	end
+	
+	if k == 18 then
+		check = false
+		local x = entity.getposx(player)
+		local y = entity.getposy(player)
+		local facing = entity.getvar(player, 'Character')
+		if facing == psprite.up then
+			check = get.locphys(x, y-1)
+		elseif facing == psprite.down then
+			check = get.locphys(x, y+1)
+		elseif facing == psprite.right then
+			check = get.locphys(x+1, y)
+		elseif facing == psprite.left then
+			check = get.locphys(x-1, y)
+		end
+		
+		if check then
+			check = entity.getvar(check, 'Name')
+			if check == 'Wall' then
+				entity.setchar(debug, "That's a wall")
+				time.text = 1
+			end
+		end
+	end
+		
+	
+			
+	
+	--[[Screen]]--
+	--[[
+	--Up
+	if k == 200 then
+		screen.y = screen.y - 1
+	end
+	--Down
+	if k == 208 then
+		screen.y = screen.y + 1
+	end
+	--Left
+	if k == 203 then
+		screen.x = screen.x - 1
+	end
+	--Right
+	if k == 205 then
+		screen.x = screen.x + 1
+	end
+	]]--
+end
+
+time = {}
+time.text = 0
+function exec.step()
+	if time.text ~= 0 then
+		time.text = time.text+1
+	end
+	if time.text == 50 then
+		time.text = 0
+		entity.setchar(debug, ' ')
+	end
+	--[[Window Follow]]--
+	screen.x = entity.getposx(player) - window.midw
+	screen.y = entity.getposy(player) - window.midh
+end
+
+exec.start()

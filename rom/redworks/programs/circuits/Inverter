@@ -1,0 +1,16 @@
+--2
+--2
+--2
+input = {}
+output = {}
+extra = {}
+input[1] = "bottom"
+input[2] = "right"
+output[1] = "back"
+output[2] = "top"
+extra[1] = "Number of Pulses"
+extra[2] = "Speed of Pulses"
+
+print ("Yep")
+print ("Test - "..input[1].." Test - "..output[1])
+print ("Yep")

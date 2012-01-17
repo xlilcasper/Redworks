@@ -1,0 +1,33 @@
+--1
+--1
+--1
+input = {}
+output = {}
+extra = {}
+input[1] = "front"
+output[1] = "back"
+extra[1] = "The dealy of pulse."
+
+
+-- Simple Timer
+-- Created by: Streetstar5 aka FuzzyPurp
+
+local rRunning = true
+term.clear()
+term.setCursorPos(1,2)
+print("Timer is now running with a " .. extra[1] .. " sec. delay.")
+print("\nInput(s): " .. input[1] .. ".")
+print("Output(s): " .. output[1] .. ".")
+print("\nHold Control+R to reboot.")
+print("Hold Control+T to terminate.")
+
+
+while rRunning do
+  sleep(extra[1] - 0.1)
+  if rs.getInput(input[1]) then 
+    else
+    rs.setOutput(output[1], true)
+    sleep(0.1)
+    rs.setOutput(output[1], false)
+  end
+end

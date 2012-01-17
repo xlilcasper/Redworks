@@ -1,0 +1,37 @@
+--1
+--1
+--0
+input = {}
+output = {}
+extra = {}
+input[1] = "left"
+output[1] = "back"
+
+-- Toggle Latch
+-- Created by: Techzune 
+-- Converted by: Streetstar5 aka FuzzyPurp
+
+rToggle = false
+local rRunning = true
+
+term.clear()
+term.setCursorPos(1,2)
+print("Toggle Latch is now running.")
+print("Input(s): " .. input[1] .. ".")
+print("Output(s): " .. output[1] .. ".") 
+print("\nHold Control+T to terminate.")
+
+while rRunning do
+  sleep(0.1)
+  local rEvent, param = os.pullEvent()
+  if rEvent == "redstone" then
+    if rs.getInput(input[1]) then
+      if rToggle == false then
+        rToggle = true
+      else
+        rToggle = false
+      end
+    end
+  end
+  redstone.setOutput(output[1], rToggle)
+end

@@ -1,0 +1,3 @@
+GameAPI is a lightweight and easy to use library that you can use to make games.
+The library uses a system of automatically drawn and bounded actors and it does most of the work that you would have to normally do yourself.
+Because of the graphical limitations of CraftOS, the interface is in an ascii-type style, a text character representing each actor.

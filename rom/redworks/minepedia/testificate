@@ -1,0 +1,20 @@
+A Villager, also known by many players as a Testificate, or Squidward, is a passive NPC (non-player character) that spawns and moves about in NPC Villages. Their characteristic look is dominated by their large, bald heads, green eyes, unibrows, and long, protruding noses. There are different types, distinguished by their attire and signifying their role in the community. Some spawn around the village, although most spawn inside buildings and leave once the door is opened. They spawn at their respective buildings corresponding to the role they have. As of 1.9 Pre-Release 3, there are 6 unique skins for the villagers which are found in the minecraft.jar file. Another, unused villager skin is a file called "villager.png" that appears to be the skin of "Steve" with some modifications. 
+Behavior: NPCs act more like passive mobs. They will randomly look at the player, and wander the area of the village. They do not attack if attacked, however they will be knocked back. When attacked, they will not run away like other passive mobs, and Hostile mobs do not see them. If the player does happen to kill one, they drop nothing. Villagers also act like squid not being attracted to wheat. They will leave buildings if the door is open and randomly wander outside. They currently have the same AI programming as a Pig. It is less likely for a villager to spawn in a village that has been altered by a player. 
+Professions: Each Villager's profession can be identified by its clothing: (Note that all Villagers have brown clothing under their robes/aprons) 
+Profession  Robe Color  
+Butcher  White Apron  
+Farmer  Brown Robe  
+Librarian  White Robe  
+Priest  Purple Robe  
+Blacksmith  Black Apron  
+Villager  Green Robe  
+History: Villagers were first introduced in Beta 1.9 Pre-release 1. They had "TESTIFICATE" over their heads the same way player names are applied in Multiplayer, which was removed in Beta 1.9 Pre-release 2. 
+Future: It has been confirmed that there will be more villager AI applied in a future update.
+Trivia: Originally, Notch had mentioned possibly using Pigman as a villager skin, although it seems unlikely now. 
+Since the Villager's introduction, there has been a texture in the game files indicating a standard Villager type due to their filename. However, this role seems to be filled by the Farmer type instead, with no Villager of this type ever spawning. 
+A texture in the main mob directory of Minecraft appears to be the default character texture ("Steve") reoriented to be a Villager texture. As is expected, applying it to the current Villager model produces a very broken look, as seen above. 
+Villagers do not despawn. 
+Villager's arms are implied to be jointed, with two parts each to create folded arms. Another likely implication is that the arms are tucked inside the sleeves of the robes (or shirts for blacksmiths and butchers) so that the sleeves touch. 
+It has been proven that Villagers can climb ladders if they are in their path, like other mobs[2] 
+Due to their peculiar look villagers have been ridiculed by the fanbase, sometimes comparing them to Squidward from SpongeBob SquarePants or Bert from Sesame Street. Notch himself agreed they look like "caveman Squidwards".[3] 
+Jeb has confirmed that more Villager AI will be added in an update some time in January 2012. 

@@ -1,0 +1,11 @@
+Each terminal stores it's own user account
+information. To add and delete accounts on a 
+terminal, once logged in, use cc-get program and 
+download the addons.
+
+"cc-get install adduser" "cc-get install deluser"
+
+These two go hand in hand with our Login system.
+
+then you can type "adduser username password"
+to remove a name use "deluser username password"

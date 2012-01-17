@@ -1,0 +1,29 @@
+--1
+--1
+--0
+input = {}
+output = {}
+extra = {}
+input[1] = "left"
+output[1] = "back"
+
+-- NOT Gate
+-- Created by: Streetstar5 aka FuzzyPurp
+
+local rRunning = true
+
+term.clear()
+term.setCursorPos(1,2)
+print("NOT Gate is now running.")
+print("Input(s): " .. input[1] .. ".")
+print("Output(s): " .. output[1] .. ".") 
+print("\nHold Control+T to terminate.")
+
+while rRunning do
+  sleep(0.1)
+  if rs.getInput(input[1]) then
+    rs.setOutput(output[1], false)
+  else
+    rs.setOutput(output[1], true)
+  end
+end

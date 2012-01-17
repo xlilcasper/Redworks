@@ -1,0 +1,134 @@
+------------------------------------------------------------
+--- cc-get version 0.0.1
+--- Created by DJRanger
+---
+--- This is very experimental, use at your own risk
+--- Install:
+---   Put this script and the cc-get-bin folder into your
+---   .minecraft/mods/ComputerCraft/lua/rom/programs/ folder
+---
+------------------------------------------------------------
+
+params = { ... }
+
+shell.run('cc-get-bin/json.lua')
+
+local urlBase = 'http://cc-get.djranger.com/cc/'
+local action = params[1]
+
+if not fs.exists('/bin') then
+	fs.makeDir('/bin')
+end
+
+if not fs.exists('/bin/packages.json') then
+	file = fs.open('/bin/packages.json', 'w')
+	file.write('{"packages": [], "installed": 0}')
+	file.close()
+end
+
+local file = fs.open('/bin/packages.json', 'r')
+local line = file.readLine()
+local data = ''
+
+while line do
+	data = data .. line
+	line = file.readLine()
+end
+
+file.close()
+data = decode(data)
+
+if not action then
+	-- No params, show some info about the program
+	print('cc-get version 0.0.2')
+	print('Usage: cc-get <action> [<program>]')
+	print('Actions:')
+		print("\tinstall <program>")
+		print("\tupdate")
+		print("\tremove <program>")
+		print("\tlist")
+		
+elseif action == 'install' or action == 'remove' then
+	
+	name = params[2]
+	if not name then
+		print('Usage: cc-get ' .. action .. ' <program>')
+	
+	elseif action == 'install' then
+		package = decode( http.get(urlBase .. 'get/' .. name).readAll() )
+		if package['error'] then
+			print(package['error'])
+		else
+			term.write('Really install ' .. name .. '? y/n: ')
+			answer = read()
+			
+			if answer:sub(0,1) == 'y' then
+				data.installed = data.installed + 1
+			
+				file = fs.open('/bin/' .. name, 'w')
+				file.write( package.source)
+				file.close()
+				
+				data.packages[ package.name ] = package
+				data.packages[ package.name ].location = '/bin/' .. name
+				
+				print('Package ' .. name .. ' installed to ' .. data.packages[ package.name ].location)
+			end
+		end
+	elseif action == 'remove' then
+		if data.packages[ name ] then
+			term.write('Really remove the package ' .. name .. '? y/n: ')
+			answer = read()
+			if answer:sub(0,1) == 'y' then
+				data.installed = data.installed - 1
+				fs.delete( data.packages[ package.name ].location )
+				print('The ' .. name .. ' package has been removed')
+			end
+		else
+			print('Package ' .. name .. ' is not installed')
+		end
+	end
+	
+elseif action == 'update' then
+	local qs = ''
+	for name, info in pairs(data.packages) do
+		qs = qs .. name .. ','
+	end
+	
+	qs = qs:sub(0, -2)
+	
+	result = decode( http.get(urlBase .. 'info/' .. qs).readAll() )
+	
+	for name, info in pairs(result) do
+		if data.packages[ name ].timestamp < info.timestamp then
+			-- Need to update
+			print('Updating ' .. name .. ' from version ' .. data.packages[ name ].version .. ' to version ' .. info.version)
+			package = decode( http.get(urlBase .. 'get/' .. name).readAll() )
+			fs.delete( data.packages[ name ].location )
+			
+			file = fs.open(data.packages[ name ].location, 'w')
+			file.write(package.source)
+			file.close()
+			
+			data.packages[ name ].version = info.version
+			data.packages[ name ].timestamp = info.timestamp
+		end
+	end
+elseif action == 'list' then
+	local i = 0
+	for name, info in pairs(data.packages) do
+		print( name .. ' version ' .. info.version )
+		i = i + 1
+	end
+	
+	if i == 0 then
+		print('No packages installed')
+	end
+
+else
+	print('Unknown command "' .. action .. '"')
+end
+
+file = fs.open('/bin/packages.json', 'w')
+file.write(encode(data))
+file.close()

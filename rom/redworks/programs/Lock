@@ -1,0 +1,48 @@
+-- Load APIs
+local tApis = fs.list( "/rom/redworks/apis" )
+for n,sFile in ipairs( tApis ) do
+	if not fs.isDir( sFile ) then
+		os.loadAPI( fs.combine( "/rom/redworks/apis", sFile ) )
+	end
+end
+
+function clear()
+  term.clear()
+  term.setCursorPos(18,5)
+  term.setCursorBlink( false )
+end
+
+function reading()
+  sleep(0.5)
+  write "."
+end
+clear()
+write "Logging out"
+for n=1,5 do
+reading()
+end
+
+sleep(1)
+  term.setCursorBlink( false )
+  term.setCursorPos(1,3)
+  redworks.showLogo2()
+  term.setCursorPos(1,17)
+print"Terminal is locked. Press ENTER to log in."
+  
+-- disables terminate key
+while true do
+fault, event, param1, param2, param3 = pcall(os.pullEvent)
+  if fault == false then 
+  elseif event == "key" and param1 == 28 then
+break end
+end
+
+term.clear()
+redworks.showLogo()
+redworks.doLogin()
+
+term.clear()
+term.setCursorPos(1,1)
+print(os.version() .. " with Redworks "..redworks.version().." Terminal ID# " .. os.getComputerID())
+print("Welcome" .. redworks.getUser()..".".. " Current time is "..textutils.formatTime( os.time(), false ))
+term.setCursorPos(1,4)

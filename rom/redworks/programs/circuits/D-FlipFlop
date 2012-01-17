@@ -1,0 +1,65 @@
+--2
+--2
+--0
+input = {}
+output = {}
+extra = {}
+input[1] = "front"
+input[2] = "left"
+output[1] = "right"
+output[2] = "back"
+-- D-FlipFlop (Coded by Ferial's)
+-- press q or Q to exit to shell
+
+-- front  input: Clock
+-- left   input: D (Data)
+-- right output: Q (Data Out)
+-- back  output: Inv Q (Inverted Data Out)
+ 
+term.clear()
+term.setCursorPos(1,2)
+print("D-FlipFlop running. Press Q to stop.")
+
+--set initial state
+ QBit = false;
+ redstone.setOutput(output[1],QBit) 
+ redstone.setOutput(output[2], not QBit) 
+
+lastinpfront = false
+
+while true do
+
+ --wait on an event
+ event, param = os.pullEvent() 
+
+ -- Key event. On a key Q or q we exit to shell  
+ if event == "char" and (param == "q" or  param == "Q") then
+  print("Device stopped")
+  break
+ end
+
+ -- redstone event
+ if event == "redstone" then
+  -- read clock input
+  inpfront = redstone.getInput(input[1])  
+  if (inpfront and not lastinpfront) then
+   -- rising edge detected 
+   -- read data Input
+   QBit = redstone.getInput(input[2])
+   -- delay the output at least a bit more than 0.05 sec to allow synchronous working circuits
+   sleep(0.06)
+   -- set new output
+   -- well I don't think the order matters (single core app) but let's do it the safe way and go low first
+   if QBit then
+    redstone.setOutput(output[2], not QBit) 
+    redstone.setOutput(output[1],QBit) 
+   else
+    redstone.setOutput(output[1],QBit) 
+    redstone.setOutput(output[2], not QBit) 
+   end
+  end
+  lastinpfront = inpfront
+ end
+ 
+end
+

@@ -1,0 +1,110 @@
+term.clear()
+shell.run( "rm", "startup" )
+local running = true
+while running do
+print ("Which circuitry would you like?")
+shell.run( "ls", "/rom/redworks/programs/circuits/" )
+choice = io.read()
+choice = string.lower(choice)
+cname = choice	
+    choice = "/rom/redworks/programs/circuits/"..choice
+	if fs.exists(choice) then
+	break
+	else 
+	print ("\nNo circuit found by that name.\n")
+	end
+end
+term.clear()
+fs.copy(choice, "startup")
+local tLines = {}
+local file = io.open( "startup", "r" )
+local sLine = file:read()
+	while sLine do
+		table.insert( tLines, sLine )
+		sLine = file:read()
+	end
+file:close()
+table.insert( tLines, "" )
+
+print (tLines[1])
+tLines[1] = string.sub(tLines[1],string.len(tLines[1]), -1)
+tLines[2] = string.sub(tLines[2],string.len(tLines[2]), -1)
+tLines[3] = string.sub(tLines[3],string.len(tLines[3]), -1)
+print (tLines[1])
+numinputs = tonumber(tLines[1])
+numoutputs = tonumber(tLines[2])
+numextras = tonumber(tLines[3])
+a = 7
+b = a + numinputs
+print ("-=- "..cname.." -=-")
+print ("Default Inputs are -")
+while a < b do
+s = string.sub(tLines[a], 13, -1)
+s = string.sub(s, 1, string.len(s) - 1)
+print (s)
+a = a + 1
+end
+print ("Default Outputs are -")
+b = a + numoutputs
+while a < b do
+s = string.sub(tLines[a], 14, -1)
+s = string.sub(s, 1, string.len(s) - 1)
+print (s)
+a = a + 1
+end
+if numextras > 0 then
+aa = a - 1
+a = 1
+print ("")
+while a <= numextras do
+s = string.sub(tLines[aa + a], 13, -1)
+s = string.sub(s, 1, string.len(s) - 1)
+print ("Enter new setting for - "..s)
+choice = io.read()
+tLines[aa + a] = "extra["..a.."] = \""..choice.."\""
+a = a + 1
+end
+end
+
+print ("\nWould you like to change "..cname.." IO settings? (y)es (n)o")
+choice = io.read()
+choice = string.lower(choice)
+if choice == "y" then
+c = 1
+results = ""
+print ("right - left - back - front - top - bottom")
+	while c <= numinputs do
+	print ("New Input for #"..c)
+	choice = io.read()
+	choice = string.lower(choice)
+	tLines[c + 6] = "input["..c.."] = \""..choice.."\""
+	results = results.."Input #"..c.." set to - "..choice.."\n"
+	c = c + 1
+	end
+	c = 1
+    while c <= numoutputs do
+	print ("New Output for #"..c)
+	choice = io.read()
+	choice = string.lower(choice)
+	tLines[c + 6 + numinputs] = "output["..c.."] = \""..choice.."\""
+	results = results.."Output #"..c.." set to - "..choice.."\n"
+	c = c + 1
+	end
+	term.clear()
+    print ("\n"..results)
+	print (cname.." installed successfully.\n")
+else
+print ("\n"..cname.." installed successfully with default settings.\n")
+end
+
+print ("Run startup or reboot to start circuit.")
+
+table.remove (tLines , 1)
+table.remove (tLines , 1)
+table.remove (tLines , 1)
+
+local file = io.open( "startup", "w" )
+for n, sLine in ipairs( tLines ) do
+file:write( sLine .. "\n" )
+end
+file:close()

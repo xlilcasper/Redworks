@@ -1,0 +1,38 @@
+--2
+--1
+--0
+input = {}
+output = {}
+extra = {}
+input[1] = "left"
+input[2] = "right"
+output[1] = "back"
+
+-- AND Gate
+-- Created by: Streetstar5 aka FuzzyPurp
+
+term.clear()
+term.setCursorPos(1,2)
+print("AND Gate is now running.")
+print("Input(s): " .. input[1] .. ", " .. input[2] .. ".")
+print("Output(s): " .. output[1] .. ".") 
+print("\nPress Q to terminate.")
+
+while true do
+
+ --wait on an event
+ event, param = os.pullEvent() 
+
+ -- Key event. Q key will exit to shell.  
+ if event == "char" and string.lower(param) == "q" then
+  print("Device stopped")
+  break
+ end 
+ --Now on to the actual Logic gate.
+
+ if rs.getInput(input[1]) == rs.getInput(input[2]) then
+    rs.setOutput(output[1], true)
+  else
+    rs.setOutput(output[1], false)
+  end
+end

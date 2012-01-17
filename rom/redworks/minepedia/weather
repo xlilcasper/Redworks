@@ -1,0 +1,36 @@
+Weather was announced at April 7th 2011 and added in the Beta 1.5 update, which was released on April 19th 2011.[1] The type of weather can depend on the biome; snow falls on arctic biomes, while others get rain. Deserts get no precipitation whatsoever. Weather is fairly rare and does not occur often. It makes the sky darker, blocks out the sun, stars, and moon. Intances of weather typically occur every 7 minecraft days (might differ in some worlds), and last for 15 minutes. When you sleep in a bed, the timer for weather resets. If it is already raining or snowing, upon waking up the weather will stop. 
+History: In early Classic, rain was introduced to the game to test out this feature. It was purely for cosmetic purposes at that time. The mechanics were simple, only testing if there is a block above to shelter the rain. It could be toggled on and off in-game using the F5 key. This feature later vanished when Indev was introduced. 
+Minecraft Alpha brought a test for snow. Generating a world during that time brings a 50% chance to get a snowy world, where ice and snow will regenerate. This feature was removed with the introduction of biomes. Despite this, mods could easily re-enable this feature by accessing the particle effects file. 
+After Minecraft Beta 1.5's announcement, a preview video [1] was uploaded onto the TeamMojang YouTube channel showing weather and other future updates. Weather was then introduced the following week. 
+Types of Weather: Rain occurs in all biomes except Tundra, Taiga, and Desert. It causes Wolves to get wet, crops to grow and will put out fires (except burning netherrack). It will not cause lava to turn into cobblestone or obsidian. Rain hitting the ground near the player can be heard as a sound effect. Snow will only fall in the Tundra and Taiga biomes. It causes water that does not have a block above it to become ice, as well as covering the top surface of all blocks exposed to the sky in the biome in snow, with the exception of transparent blocks. 
+During both weather conditions, dark thunderstorms might occur, during which lightning strikes and thunder rumbles. Getting hit by lightning will result in the loss of two and a half hearts while playing on normal. 
+Effects of Rain and Snow: Rain and snowfall are temporary but global occurrences.[2] 
+During rain and snow, thunderstorms become possible. 
+Rain and snow decrease the light level by 3, to light level 12 in full daylight.[3] 
+Notch has said that in a future update rain will cause flowers to regrow. 
+Rain and snow cannot be seen through glass that is being broken.
+Effects of a Thunderstorm: Thunderstorms are much darker than normal rain, at light level 7 or less. This is dark enough to spawn hostile mobs.[4] 
+Lightning creates fire where it strikes, but the rain usually puts the fire out before it can spread. This can set fire to wooden structures. 
+If Lightning strikes a pig, it morphs into a zombie pigman.
+If lightning strikes a creeper, it becomes supercharged and has a much more powerful explosion.[6] 
+Being struck by lightning or standing near a lightning strike deals two and a half hearts of damage, not including damage from the fire. 
+Effects of Snow Only: Ice and snow regenerate during snowfall.
+Bugs: Occasionally, in an area with many biome changes, the rain will appear to fall onto snow without melting it. 
+Sometimes rain falls in snow biomes. 
+The area illuminated by a fire will stay lit if the fire is put out by rain (in Advanced OpenGL mode only). 
+When lightning strikes, ice, water, portals, rain, snow, and other particles behind it become see through. 
+Ice regenerates all of the time - this is a temporary fix for ice not regenerating in snow. 
+Some mobs have been killed during weather activities such as snow and rain in a manner similar to daylight, even at night. 
+Snow does not accumulate on bedrock. 
+Rain and snow originally fell through certain blocks like glass, stairs and slabs. This was fixed a day after the release of 1.5. 
+Sometimes rain won't fall on beaches or over the sea. 
+Trivia: Rain is needed for a thunderstorm, even though in the game's files, thunderstorms can be activated separately. 
+Tamed wolves will run away to shelter during a thunderstorm. 
+Usually it starts to rain/snow at night or at dusk. 
+If it is raining/snowing and you go to sleep it will most likely have stopped before you wake. 
+Mobs that burn at dawn will not burn if it is raining because they are not in direct sunlight. 
+Rain and Snow will still fall even if you are above the cloud layer. 
+Snow and Rain are both considered the same weather effect. The appearance of rain vs. snow is dependant on biome type. 
+When climbing down a ladder, the rain previously seemed to freeze until you reached the bottom or changed direction, possibly indicating that you climbed at same speed as the rain fell. This was fixed in 1.6. 
+Rain and snow used to fall underwater in 1.5. This bug was also fixed in 1.6. 
+If weather occurs in the Nether and the void is visible, the void will constantly flash brightly and no rain, snow, or lightning will be present. 

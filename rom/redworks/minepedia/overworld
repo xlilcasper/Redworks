@@ -1,0 +1,116 @@
+The Overworld is the starting dimension in Minecraft. It is the only dimension that has existed throughout the development of Minecraft; The Nether was the second dimension to be added, in Alpha 1.2.0, and The End is another dimension that appeared for the first time in Beta 1.9pre4. 
+The Overworld is the entire three dimensional space in which in-game construction can occur, encompassing the span from the level ceiling down to bedrock and extending in every direction on the horizontal plane. It is generated through a secret process which creates multiple Noise maps to create differing elevations, general chunk shapes, and complex mountain and cave systems. 
+All but four of the mobs in the game can appear in the Overworld: Wolves, Pigs, Sheep, Cows, Mooshrooms, Chickens, Squid, Zombies, Skeletons, Spiders, Spider Jockeys, Endermen, Creepers and Slimes all spawn normally, and Pigs can, very rarely, be hit by lightning, which turns them into Zombie Pigmen. Ghasts, Blazes and Magma Cubes can only spawn in the Nether, and the Enderdragon can only spawn in The End. 
+Worlds in Minecraft are generated through a procedural formula that takes a random number as a starting point - a seed, and it will be used to generate all the terrain of the overworld (and the Nether). 
+As of Beta 1.3 the option was added for the player to specify the world seed. Using a specific seed generates exactly the same world each time, and thus interesting Minecraft worlds could be shared between players. The spawn is not on exactly the same spot, though, so it is wise to give co-ordinates instead of directions. The seed input is converted into an integer, so, for instance, the word 'Glacier' corresponds to a value of 1772835215, which generates exactly the same world when entered as a seed value. 
+Many seeds are chosen simply because they spawn the player near desirable resources, a stronghold or some certain special structure, such as a dungeon. 
+As of Beta 1.8, players could find the current map seed by tapping F3.
+In Classic and Indev, maps can be generated in "small" (128×128×64), "normal" (256×256×64), and "huge" (512×512×64) sizes. 
+In Infdev, Alpha and Beta maps are somewhat infinitely big - They are made up of chunks; this means that as the player explores the map distant chunks are generated automatically, leading to theoretically infinite maps. In practice, technical reasons (the limits of 32-bit integers[1]) force the maximum map size to be around 8 times the surface area of the Earth [1], which comes out to about 4,080,576,000 km2. Whilst the horizontal planes of the maps are vast in size, the vertical plane remains at a fixed 128-block height [2]. 
+While the map is infinite, the number of blocks the player may walk on is limited. The map, counting air as a block, and not counting blocks beyond and at where block physics fail (32,000,000 from the center) from top to bottom, and all in between, is essentially always 1.31071992 × 1017 blocks big. In multiplayer, chunks will also stop generating after the world reaches a certain file size.
+Generated Blocks: Entries marked with a D require additional data to fully define the block in a Beta world. Entries marked with an I have a different ID as an inventory item. Entries marked with a B require additional inventory data to fully define the inventory item. Entries marked with a T have tile entities associated with them to store additional data. Items with IDs in red cannot be legitimately obtained in the player's inventory in the game; they can only be obtained by "hacking" (such as the use of Inventory editors) or, in multiplayer using the /give server command.
+Naturally Generated includes blocks that are created through the world seed. 
+
+Icon  Dec  Hex  Block type  
+ 00  00  Air  
+  01  01  Stone  
+  02  02  Grass  
+  03  03  Dirt  
+  07  07  Bedrock  
+  09  09  Water (Stationary) D  
+  11  0B  Lava (Stationary) D  
+  12  0C  Sand  
+  13  0D  Gravel  
+  14  0E  Gold Ore  
+  15  0F  Iron Ore  
+  16  10  Coal Ore  
+  17  11  Wood D B  
+  18  12  Leaves D B  
+  21  15  Lapis Lazuli Ore  
+  24  18  Sandstone  
+  31  1F  Tall Grass D B  
+  32  20  Dead Bush  
+Icon  Dec  Hex  Block type  
+  37  25  Dandelion  
+  38  26  Rose  
+  39  27  Brown Mushroom  
+  40  28  Red Mushroom  
+  56  38  Diamond Ore  
+  73  49  Redstone Ore  
+  78  4E  Snow  
+  79  4F  Ice  
+  81  51  Cactus D  
+  82  52  Clay Block  
+  83  53  Sugar Cane D I  
+  86  56  Pumpkin D  
+  99  63  Huge Brown Mushroom D  
+  100  64  Huge Red Mushroom D  
+  106  6A  Vines D  
+  110  6E  Mycelium  
+  111  6F  Lily Pad  
+Naturally Created means a combination of events that cause a new block to be placed by natural causes, not the player. 
+
+Icon  Dec  Hex  Block type  
+ 00  00  Air  
+  02  02  Grass  
+  03  03  Dirt  
+  04  04  Cobblestone  
+  08  08  Water (Flowing) D  
+  10  0A  Lava (Flowing) D  
+  31  1F  Tall Grass D B  
+  39  27  Brown Mushroom  
+  40  28  Red Mushroom  
+Icon  Dec  Hex  Block type  
+  49  31  Obsidian  
+  51  33  Fire D  
+  78  4E  Snow  
+  79  4F  Ice  
+  81  51  Cactus D  
+  83  53  Sugar Cane D I  
+  106  6A  Vines D  
+  110  6E  Mycelium  
+Same as Naturally Generated, but these blocks are only created with the "Generate Structures" option enabled. 
+
+Icon  Dec  Hex  Block type  
+  05  05  Wooden Plank  
+  09  09  Stationary Water D  
+  11  0B  Stationary Lava D  
+  13  0D  Gravel  
+  17  11  Wood D B  
+  30  1E  Cobweb  
+  35  23  Wool (Black) D B  
+  44  2C  Slabs D B  
+  47  2F  Bookshelf  
+  50  32  Torch D  
+  52  34  Monster Spawner T  
+  53  35  Wooden Stairs D  
+  54  36  Chest D T  
+  58  3A  Crafting Table  
+Icon  Dec  Hex  Block type  
+  59  3B  Seeds D  
+  60  3C  Farmland D  
+  61  3D  Furnace D T  
+  64  40  Wooden Door D I  
+  65  41  Ladders D  
+  66  42  Rails D  
+  67  43  Stone Stairs  
+  71  47  Iron Door D I  
+  72  48  Wooden Pressure Plate D  
+  77  4D  Button D  
+  85  55  Fence  
+  97  61  Hidden Silverfish D  
+  98  62  Stone Bricks D B (2)  
+  101  65  Iron Bars  
+  102  66  Glass Pane  
+Chunks are the method used by Notch to divide maps into manageable pieces. They are 16 blocks wide, 16 blocks long, and 128 blocks deep, and encompass 32,768 blocks. By adjusting the render distance, differing numbers of chunks will be loaded into memory, with "far" rendering the maximum of 81 chunks. Only chunks which have been loaded may experience activity such as spawning, despawning, growth, liquid movement, or player interaction. Upon reaching the required distance away from a chunk, it will be unloaded from the memory, however not deleted. Thus, upon re-entering that area, whatever has been changed will remain changed. 
+Another subdivision of The Overworld is into Biomes. Biomes may have varying sizes, and each has its own features. For example, a forest biome will have large quantities of trees, where as a snow biome will have snow and ice. 
+The Overworld is able to seamlessly create new areas by using patterns found in the surrounding chunks and extend those into the newly created chunk. These patterns, while unique to each world, can be categorized easily by comparing them to a real-world equivalent, such as cliffs or oceans. While Minecraft is based on landforms found on earth, impossible formations, such as floating islands, can be found throughout the Overworld. 
+The Overworld can be navigated by use of the position of the sun and the moon, the movement of the clouds, and the movement of the stars. Assuming that the sun and moon rise in the east and go west, the clouds can be observed moving north and stars east. 
+Tools used for Navigating The Overworld include the Compass and Map. The Compass points to the spawn point, and the Map shows a fixed area around where it was made, and shows you the area very generically. In the Nether, the Compass needle will spin wildly, and is thus useless. Since Beta 1.9 (Pre-Release 4), the Compass needle and the Clock will spin randomly within The End, similar to the Nether. 
+Since Alpha 1.2.3, the F3 key toggles a debug console which shows the player their absolute coordinates, where the X and Z coordinates show longitude and latitude, and the Y coordinate shows height, where Y=64 corresponds to sea level. In addition, in Beta 1.7 an 'f' value was added, which indicates the direction the player is facing, 0 being the direction in which the sun sets, and it goes counter clockwise from there: 1 being the direction in which the clouds move, 2 and 3 are opposite to 0 and 1 respectively. 
+Since the sun changed position relative to the clouds (they now move in the same direction) in 1.0.0, if you want to assume that the sun rises in the east and sets in the west, the 'f' values are, 0=west, 1=south, 2=east, and 3=north 
+The overworld is the only dimension with a day/night cycle. During the daytime, the sun acts as a light source. This light is strong enough to kill Zombies, and Skeletons, make Endermen disappear and also makes Spiders neutral. The only mobs that survive and stay hostile in the daylight are creepers, slimes and cave spiders. At night time the moon is the only natural light source however it provides only a little light, allowing hostile mobs to spawn. 
+The Far Lands used to be an area that formed the "edge" of the "infinite" map, but was later removed accidentally from a patch on 1.8 due to the change in the terrain generation code. When players made it to the Far Lands, they experienced an excessive amount of lag and the map was severely distorted. 
+According to Notch, this distortion could be fixed, but since no one was likely to make it to the Far Lands without some form of cheating, he says that he was likely not going to fix it since he liked the idea of a mysterious world beyond a certain distance. When the Beta 1.8 update was released, the newly re-written biome code did in fact remove the Far Lands and will just generate as an extremely large ocean. The far lands may be brought back in a later patch, though it is unlikely. 
+Trivia: World seeds can be extracted from the level.dat file by various modes or seeds, such as http://seedscope.net. Alternatively, it can be found in-game on the performance screen accessed by pressing F3. 
+There is a bug that sometimes causes the files for deleted worlds to not be deleted from your hard drive. If a new world is created with the same name, this can cause the game to reuse the old files, and thus, parts of the old map, rather than generate an entirely new map. 
