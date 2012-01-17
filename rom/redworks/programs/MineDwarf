@@ -1,3 +1,5 @@
+shell.run('rom/redworks/apis/redworks')
+
 --Sprites
 psprite = {}
 psprite.up = '^'
