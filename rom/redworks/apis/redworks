@@ -3,7 +3,17 @@ local locked=false
 -- functions for making read only values
 
 function version()
-	return "1.0"
+	return "1.01"
+end
+
+function waitForKey()
+	while true do
+		event, param = os.pullEvent()
+		if event == "key" then
+            break
+		end
+	end
+	return param
 end
 
 function setUser(sUser)
@@ -13,6 +23,11 @@ end
 
 function getUser()
 	return user
+end
+
+function reading()
+  sleep(0.5)
+  write "."
 end
 
 function showLogo()
@@ -37,6 +52,14 @@ function showLogo2()
 	print"@!!  !!@  @!@ @!@  !@! @!@!!@!  @!@@!@!   !@@!!"
 	print" !:  !!:  !!  !!:  !!! !!: :!!  !!: :!!      !:!"
 	print"  ::.:  :::    : :. :   :   : :  :   ::: ::.: : "
+end
+
+function doWelcome()
+term.clear()
+term.setCursorPos(1,1)
+print(os.version() .. " with Redworks "..redworks.version().." Terminal ID# " .. os.getComputerID())
+print("Welcome " .. redworks.getUser()..".".. " Current time is "..textutils.formatTime( os.time(), false ))
+term.setCursorPos(1,4)
 end
 
 function doLogin() --returns true if login succeeds, false if it fails
@@ -138,7 +161,7 @@ end
 
 --Helper functions
 
---XLC (XLilCaspers) Windows libary included with permissions. Access with redworks.showWinow,redworks.textBox, redworks.selectWindow...
+--XLC (XLilCaspers) Windows libary included with permissions. Access with redworks.showWindow,redworks.textBox, redworks.selectWindow...
 function rawWriteLoc(x,y,sText)
 	term.setCursorPos(x,y)
 	term.write(sText)
@@ -425,6 +448,381 @@ function clearArea(x,y,w,h,char)
 	for yy=0,h do
 		for xx=0,w do
 			rawWriteLoc(x+xx,y+yy,sChar)
+		end
+	end
+end
+
+--End of windows libary
+
+function class(base, init)
+   local c = {}    -- a new class instance
+   if not init and type(base) == 'function' then
+      init = base
+      base = nil
+   elseif type(base) == 'table' then
+    -- our new class is a shallow copy of the base class!
+      for i,v in pairs(base) do
+         c[i] = v
+      end
+      c._base = base
+   end
+   -- the class will be the metatable for all its objects,
+   -- and they will look up their methods in it.
+   c.__index = c
+
+   -- expose a constructor which can be called by <classname>(<args>)
+   local mt = {}
+   mt.__call = function(class_tbl, ...)
+   local obj = {}
+   setmetatable(obj,c)
+   if init then
+      init(obj,...)
+   else 
+      -- make sure that any stuff from the base class is initialized!
+      if base and base.init then
+      base.init(obj, ...)
+      end
+   end
+   return obj
+   end
+   c.init = init
+   c.is_a = function(self, klass)
+      local m = getmetatable(self)
+      while m do 
+         if m == klass then return true end
+         m = m._base
+      end
+      return false
+   end
+   setmetatable(c, mt)
+   return c
+end
+-----------EXTRA----------
+
+--[[ (( Rin API ))
+
+Usage: Just use the following information to utilize the available commands
+
+:::Functions:::
+
+ ENTITY 
+
+[entity.new( Name, X, Y, Text, Visibility, Physical )] returns Integer ID
+Creates a new entity
+Name;String -- Entity Name -- Currently only usable via entity.getvar() and entity.setvar()
+X;Integer -- Entity X Position
+Y;Integer -- Entity Y Position
+Text;String -- The text on-screen that represents the entity
+Visibility;Bool -- Whether or not the entity is drawn
+Physical;Bool -- Whether or not the entity is a physical entity -- Currently only changeable via entity.getvar() and entity.setvar()
+Note: Physical entities are unable to move to the position of other physical entities, but can be created at the same position, watch out.
+
+[entity.setpos(ID, x, y, r)] -- ID is the returned value of entity.new()
+Sets the position of entity ID to position x, y
+Or, if r is set to true, sets position relative to current position
+entity.setpos(ID, 3, 0, r) would add 3 to ID's x position, and 0 to ID's y position
+
+[entity.setchar(ID, Text)]
+Changes the character, or group of characters, that represent the entity on-screen
+
+[entity.setvis(ID, Bool)]
+Sets whether the entity is visible on-screen
+
+[entity.setabs(ID, Bool)]
+Sets whether the entity's position is absolute( x:1 y:1 remains the same regardless of screen position. Useful for GUI )
+
+[entity.addvar(ID, Var, Value)]
+Creates a new variable named Var of value Value to the entity ID
+Var:String -- Variable Name
+Value:Any -- Variable Value
+
+[entity.setvar(ID, Var, Value)]
+Sets the value of the variable Var to the value Value on the entity ID
+
+[entity.getvar(ID, Var)]
+Returns the value of the variable Var on the entity ID
+
+[entity.getposx(ID)]
+Returns the X position of the entity ID
+
+[entity.getposy(ID)]
+returns the Y position of the entity ID
+
+[entity.remvar(ID, Var)]
+Removes the variable Var from the entity ID
+
+ GET 
+
+[get.locphys(x, y)]
+Checks if there is a physical entity at position x,y
+returns physical entity's ID, otherwise returns false
+
+ EXECUTABLE 
+
+[exec.quit()]
+Ends the current execution
+
+[exec.draw()]
+Draws the screen -- Runs automatically if a custom exec.update isn't set
+
+[exec.update()]
+User defined;
+Runs every step, exec.update() overrides exec.defupdate(), which is the default update function
+If you update yourself, you need to run exec.draw() or create your own drawing procedure
+
+[exec.start()]
+Starts the execution, nothing will be executed beyond this point until exec.stop() is called!
+
+[exec.beginstep()] [exec.step()] [exec.endstep()]
+User defined;
+These are run every step, and in the order seen above.
+This is a good place to put any sort of logic or conditional checks.
+
+[exec.key(k)]
+User defined;
+This is run when a key is pressed, and the argument k contains the code for the key.
+Find the Key Codes here; http://www.minecraftwiki.net/wiki/Key_Codes
+
+[exec.quit]
+Ends the execution, returning to the command line.
+
+:::Variables:::
+
+window.w -- Window Width
+window.h -- Window Height
+window.midw -- Center of the Window Width
+window.midh -- Center of the Window Height
+
+screen.x -- Screen x offset
+screen.y -- Screen y offset
+
+:::Entity Variables:::
+These are the default Entity variables, found with entity.getvar()
+'Name' -- String -- Entity's name, which you set when making a new entity
+'X Position' -- Integer -- Entity's X Position
+'Y Position' -- Integer -- Entity's Y Position
+'Character' -- String -- The string that represents the entity on-screen
+'Visibility' -- Bool -- Defines whether an entity is drawn on-screen
+'Physical' -- Bool -- Defines whether an entity is physical or not
+'Absolute' -- Bool -- Defines whether an entity's location is absolute;
+Position (1,1) is the top left corner of the screen at all times if this is true for the object
+'Variable Count' -- Integer -- Defines how many variables the entity has :::DO NOT CHANGE:::
+
+]]--
+
+window = {}
+window.w,window.h = term.getSize()
+window.midw = window.w/2
+window.midh = window.h/2
+
+screen = {}
+
+screen.x = 0
+screen.y = 0
+
+--[[ ENTITY VARIABLES AND FUNCTIONS ]]--
+entity = {}
+entitynum = 1
+
+function entity.new(a, x, y, t, c, d) -- Adds a new Entity to the execution
+	id = entitynum
+	entity[id] = {}
+	
+	entity[id][1] = {}
+	entity[id][1][1] = 'Name'
+	entity[id][1][2] = a
+	
+	entity[id][2] = {}
+	entity[id][2][1] = 'X Position'
+	entity[id][2][2] = x -- XPos
+	
+	entity[id][3] = {}
+	entity[id][3][1] = 'Y Position'
+	entity[id][3][2] = y -- YPos
+	
+	entity[id][4] = {}
+	entity[id][4][1] = 'Character'
+	entity[id][4][2] = t -- Text Representing the Entity
+	
+	entity[id][5] = {}
+	entity[id][5][1] = 'Visibility'
+	entity[id][5][2] = c -- Depicts whether the object is visible or not
+	
+	entity[id][6] = {}
+	entity[id][6][1] = 'Physical'
+	entity[id][6][2] = d -- If an object is Physical, it cannot move onto the same spot as a physical object
+						 -- WARNING: Objects can still be set to physical using entity.setvar(), or by creating an object at the same spot as another object!
+						 
+	entity[id][7] = {}
+	entity[id][7][1] = 'Absolute'
+	entity[id][7][2] = false -- Sets whether an object has an absolute position(1 = 1 on screen regardless of screen offset) or not
+	
+	entity[id][8] = {}
+	entity[id][8][1] = 'Variable Count'
+	entity[id][8][2] = 7 -- Counts how many variables there are
+	
+	entitynum = entitynum+1
+	return id
+end
+
+function entity.setchar(a, b)
+	entity[a][4][2] = b
+end
+
+function entity.setphys(a, b)
+	entity[a][5][2] = b
+end
+
+function entity.setabs(a, b)
+	entity[a][7][2] = b
+end
+
+function entity.addvar(a, b, c) -- Adds a new variable to an Entity
+	varcount = entity[a][8][2] + 1
+	entity[a][varcount] = {}
+	entity[a][varcount][1] = b
+	entity[a][varcount][2] = c
+	entity[a][8][2] = varcount
+end
+
+function entity.remvar(a, b)
+	for i in ipairs(entity[a]) do
+		if entity[a][i][1] == b then
+			table.remove(entity[a], i)
+			entity[a][8][2] = entity[a][8][2] - 1
+			break
+		end
+	end
+end
+
+function entity.setvar(a, b, c)
+	for i in ipairs(entity[a]) do
+		if entity[a][i][1] == b then
+			entity[a][i][2] = c
+			break
+		end
+	end
+end
+
+function entity.getvar(a, b)
+	answer = 0
+	for i in ipairs(entity[a]) do
+		if entity[a][i][1] == b then
+			answer = entity[a][i][2]
+			break
+		end
+	end
+	return answer
+end
+			
+
+function entity.rem(a) -- Removes Entity from the execution
+	--Don't know if this is possible or not. Might just zero out the entity. Reason? table.remove() would shift all the higher index entities down, changing their ID's
+end
+
+function entity.getposx(a) return entity[a][2][2] end
+function entity.getposy(a) return entity[a][3][2] end
+
+function entity.setpos(a, x, y, r) -- Sets the Entity's Position
+	if r ~= nil then
+		local resx = entity[a][2][2] + x
+		local resy = entity[a][3][2] + y
+		if get.locphys(resx,resy) == false then
+			entity[a][2][2] = resx
+			entity[a][3][2] = resy
+		end
+	else
+		if get.locphys(x,y) == false then
+			entity[a][2][2] = x
+			entity[a][3][2] = y
+		end
+	end
+end
+
+--[[ GET FUNCTIONS ]]--
+get = {}
+
+function get.locphys(x, y)
+	answer = false
+	for i,v in ipairs(entity) do
+		if entity[i][6][2] then
+			if entity[i][2][2] == x then
+				if entity[i][3][2] == y then
+					answer = i
+					break
+				end
+			end
+		end
+	end
+	return answer
+end
+
+--[[ SCREEN FUNCTIONS ]]--
+function printCenter( y, s ) -- Prints centered text on the screen
+	local x = math.floor((w - string.len(s)) / 2)
+	term.setCursorPos(x, y)
+	term.clearLine()
+	term.write( s )
+end
+
+--[[ RUNTIME ]]--
+--Variables
+exec = {}
+exec.active = false
+--Functions
+function exec.quit() -- Ends the current execution
+	term.clear()
+	exec.active = false
+	term.setCursorPos(window.midw-7,window.h)
+	term.write('Thank you for using The RedworksAPI')
+	sleep(2)
+	term.clear()
+	term.setCursorPos(1,1)
+end
+
+function exec.draw() -- Draws the screen
+	term.clear()
+	for i,v in ipairs(entity) do
+		if entity[i][5][2] == true and entity[i][7][2] == false then
+			local x = entity[i][2][2]
+			local y = entity[i][3][2]
+			term.setCursorPos(x - screen.x, y - screen.y)
+			term.write(entity[i][4][2])
+		end
+	end
+	for i,v in ipairs(entity) do
+		if entity[i][5][2] == true and entity[i][7][2] == true then
+			local x = entity[i][2][2]
+			local y = entity[i][3][2]
+			term.setCursorPos(x, y)
+			term.write(entity[i][4][2])
+		end
+	end
+end
+
+function exec.defupdate() -- Default Update, can be overridden for custom draw handling
+	term.clear()
+	exec.draw()
+end
+
+function exec.start() -- Starts the current execution
+	exec.active = true
+	os.startTimer(1/30)
+	while exec.active do
+		local t,k = os.pullEvent()
+		if t == 'timer' then
+			if exec.beginstep ~= nil then exec.beginstep() end
+			if exec.step ~= nil then exec.step() end
+			if exec.endstep ~= nil then exec.endstep() end
+			if exec.update ~= nil then exec.update()
+			else exec.defupdate() end
+			os.startTimer(1/30)
+		elseif t == 'key' then
+			if k == 14 then
+				exec.quit()
+			else
+				if exec.key ~= nil then exec.key(k) end
+			end
 		end
 	end
 end
