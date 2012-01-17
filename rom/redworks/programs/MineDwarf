@@ -12,7 +12,7 @@ psprite.select = '-->'
 
 player = entity.new('Player', 5, 5, psprite.up, true, true)
 entity.addvar(player, 'num', 1)
-title = entity.new('title', 1, 1, 'MineDwarf: Beginnings', true, false)
+title = entity.new('title', 1, 1, 'MineDwarf: Beginnings   Press Backspace to Exit', true, false)
 entity.setabs(title, true)
 debug = entity.new('Debug', 2, 2, ' ', true, false)
 entity.setabs(debug, true)
