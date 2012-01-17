@@ -7,14 +7,14 @@ end
 
 if sTopic == "index" then
 	print( "Help topics availiable:" )
-	shell.run( "ls", "/rom/help" )
-	shell.run( "ls", "/rom/redworks/help" )
+	local tTopics = help.topics()
+	textutils.tabulate( tTopics )
 	return
 end
 	
 local w,h = term.getSize()
-local file = io.open( "rom/help/"..sTopic )
-local file = io.open( "rom/redworks/help/"..sTopic )
+local sFile = help.lookup( sTopic )
+local file = ((sFile ~= nil) and io.open( sFile )) or nil
 local nLinesPrinted = 0
 if file then
 	local sLine = file:read()

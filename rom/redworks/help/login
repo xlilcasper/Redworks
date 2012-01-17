@@ -1,13 +1,11 @@
-Each terminal stores it's own user account information. 
-To add accounts to a terminal, once logged in, use edit "accounts.f"
-you should see your name on line 1 and password on line 2. Each account
-is stored like so,
+Each terminal stores it's own user account
+information. To add and delete accounts on a 
+terminal, once logged in, use cc-get program and 
+download the addons.
 
-username1
-password1
-username2
-password2
-username3
-password3
+"cc-get install adduser" "cc-get install deluser"
 
-Add guest accounts, or allow multiple accounts/logins on a specific terminal.
+These two go hand in hand with our Login system.
+
+then you can type "adduser username password"
+to remove a name use "deluser username password"
