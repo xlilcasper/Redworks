@@ -766,7 +766,7 @@ function exec.quit() -- Ends the current execution
 	term.clear()
 	exec.active = false
 	term.setCursorPos(window.midw-7,window.h)
-	term.write('Thank you for using The RedworksAPI')
+	term.write('Thanks for using the RinAPI')
 	sleep(2)
 	term.clear()
 	term.setCursorPos(1,1)
