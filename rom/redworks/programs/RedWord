@@ -1,3 +1,6 @@
+
+--Version 1.1
+
 term.setCursorBlink(true)
 local sNew = "|   [Make new file]    Open existing file   |"
 local sOpen = "|    Make new file    [Open existing file]  |"
@@ -16,6 +19,14 @@ local w, h = term.getSize()
 
 local function fMenuXCor()
 	iMenuXCor = (w/2)-21
+end
+
+local function Home()
+term.clear()
+term.setCursorPos(1,1)
+print(os.version() .. " with Redworks "..redworks.version().." Terminal ID# " .. os.getComputerID())
+print("Welcome " .. redworks.getUser()..".".. " Current time is "..textutils.formatTime( os.time(), false ))
+term.setCursorPos(1,4)
 end
 
 local function fCheckDir()
@@ -87,10 +98,10 @@ local function fLoad()
 		elseif sYesOrNo == sNo then
 			term.clear()
 			term.setCursorPos(1,1)
-			print("Quitting")
+			print("Returning to Main Menu...")
 			sleep(1)
 			fExitDir()
-			shell.exit()
+			shell.run("redword")
 		end
 	end
 end
@@ -99,17 +110,17 @@ local function fMenuNew()
 	term.clear()
 	term.setCursorBlink(false)
 	term.setCursorPos(iMenuXCor,1)
-	write(" ___________________________________________")
+	print(" ___________________________________________")
 	term.setCursorPos(iMenuXCor,2)
-	write("|                                           |")
+	print("|                                           |")
 	term.setCursorPos(iMenuXCor,3)
-	write("|     How do you want to call the file?     |")
+	print("|     How do you want to call the file?     |")
 	term.setCursorPos(iMenuXCor,4)
-	write("|                                           |")
+	print("|                                           |")
 	term.setCursorPos(iMenuXCor,5)
-	write("|                                           |")
+	print("|                                           |")
 	term.setCursorPos(iMenuXCor,6)
-	write("|___________________________________________|")
+	print("|___________________________________________|")
 	term.setCursorPos(iMenuXCor+6,5)
 	sFile = io.read()
 	sFileExt = string.sub(sFile, -3)
@@ -156,10 +167,10 @@ local function fMenuNew()
 		elseif sYesOrNo == sNo then
 			term.clear()
 			term.setCursorPos(1,1)
-			print("Quitting")
+			print("Returning to Main Menu...")
 			sleep(1)
 			fExitDir()
-			shell.exit()
+			shell.run("redword")
 		end
 	else
 		fOpenNew()
@@ -208,7 +219,7 @@ local function fMenuStart()
 	term.setCursorPos(iMenuXCor,7)
 	write("|                                           |")
 	term.setCursorPos(iMenuXCor,8)
-	write("| Welcome to the RedworksOS Word Processor, |")
+	write("| Welcome to the Redworks Word Processor, |")
 	term.setCursorPos(iMenuXCor,9)
 	write("|          what do you want to do?          |")
 	term.setCursorPos(iMenuXCor,10)
@@ -246,6 +257,19 @@ local function fMenuStart()
 		fMenuNew()
 	end
 	term.setCursorBlink(true)
+end
+
+function fSave()
+	local file = io.open( sPath, "w" )
+	if file then
+		for n, sLine in ipairs( tLines ) do
+			file:write( sLine .. "\n" )
+		end
+		file:close()
+		bSave = true
+	else
+		bSave = false
+	end
 end
 
 local function fMenuExit()
@@ -297,29 +321,21 @@ local function fMenuExit()
 				end
 			end
 		end
+
 	until param == 28
 	if sSaveOrQuit == sSave then
 		fSave()
-		term.setCursorBlink(true)
 		bExit = false
 	elseif sSaveOrQuit == sQuit then
+	    fExitDir()
+		Home()
 		bExit = true
 	elseif sSaveOrQuit == sSaveAndQuit then
-		bExit = true
 		fSave()
-	end
-end
-
-function fSave()
-	local file = io.open( sPath, "w" )
-	if file then
-		for n, sLine in ipairs( tLines ) do
-			file:write( sLine .. "\n" )
-		end
-		file:close()
-		bSave = true
-	else
-		bSave = false
+		fExitDir()
+		Home()
+		bExit = true
+		
 	end
 end
 
@@ -455,8 +471,5 @@ while true do
 		fSetCursor(x, y)
 	end
 end
-
 fExitDir()
-term.clear()
-term.setCursorBlink(false)
-term.setCursorPos(1,1)
+Home()
