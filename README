@@ -18,6 +18,8 @@ Official Redworks CC+RP2 server information is on our Homepage.
 
 Features
 
+-CIM. Casper's Instant messenger, chat live with other CC users over the world both cross SSP/SMP
+
 -Custom login screen with username and password. Your able to secure down a terminal and keep it secure. Log in does not allow ctrl+t to bypass it.
 
 -Windows api lib included into Redworks, draw windows, text boxes, select windows, all with a single command
