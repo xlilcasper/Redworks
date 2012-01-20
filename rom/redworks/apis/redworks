@@ -3,7 +3,11 @@ local locked=false
 -- functions for making read only values
 
 function version()
-	return "1.01"
+	return "1.12"
+end
+
+function sprint(text)
+  textutils.slowPrint(text)
 end
 
 function waitForKey()
