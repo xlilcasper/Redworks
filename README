@@ -15,3 +15,30 @@ and other users from the Minecraft community. Please be respectable and mature.
 http://webchat.esper.net/?channels=#computercraft
 
 Official Redworks CC+RP2 server information is on our Homepage.
+
+Features
+
+-Custom login screen with username and password. Your able to secure down a terminal and keep it secure. Log in does not allow ctrl+t to bypass it.
+
+-Windows api lib included into Redworks, draw windows, text boxes, select windows, all with a single command
+
+-Class API easily create classes in LUA with inheritance
+
+-Rin’s API to help in making physic games.
+
+-Minepedia an encyclopedia of Minecraft
+
+-GameAPI libary and RedBundle Libary to help making programs easier
+
+-cc-get makes finding and installing new programs a snap, even in SMP
+
+-Custom Circuitry API make complex circuits easy for when you don’t have RP or need more control.
+current version includes about a dozen logic gates, tons more coming in future updates.
+
+-RedWord processor, a text editor and word processor which lets you write, edit, and save .txt files. 
+
+-Several new programs to make using and programing your computer a breeze
+
+-Tons of small tweaks to just make things easier to use.
+
+Floppy version coming soon!! 
