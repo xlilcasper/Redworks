@@ -2,6 +2,7 @@
 Extract the file. 
 You should have a rom folder. 
 Place that into your .minecraft/mods/computercraft/lua
+Do not remove the original rom folder, all you are doing is merging our rom folder with the original rom folder
 Overwrite should prompt for a help(s) file and startup file.
 Say yes and continue. 
 Have fun.
