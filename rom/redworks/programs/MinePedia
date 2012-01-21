@@ -8,7 +8,7 @@ else
 end
 
 local w,h = term.getSize()
-local file = io.open( "rom/redworks/encyclopedia/"..sTopic )
+local file = io.open( "rom/redworks/minepedia/"..sTopic )
 if file then
 
   local sLine = file:read()
@@ -29,5 +29,5 @@ if file then
   end
   file:close()
 else
-  print( "No data available. Type 'encyclopedia list'" )
+  print( "No data available. Type 'minepedia list'" )
 end
