@@ -1,52 +1,19 @@
---Setup redworks functions
+shell.setPath( ".:/rom/programs" )
+help.setPath( "/rom/help" )
 
-local path=":/rom/redworks/programs:/rom/redworks/libs"
-if http then path=path..":/rom/redworks/programs/http:/bin"end
-
-shell.setPath( ".:/rom/programs"..path )
-help.setPath( "rom/help:/rom/redworks/help/" )
 shell.setAlias( "ls", "list" )
 shell.setAlias( "dir", "list" )
 shell.setAlias( "cp", "copy" )
 shell.setAlias( "mv", "move" )
 shell.setAlias( "rm", "delete" )
-shell.setAlias( "off", "shutdown" )
-shell.setAlias( "faq", "help" )
-shell.setAlias( "cl", "clear" )
-shell.setAlias( "goto", "cd" )
-shell.setAlias( "del", "delete" )
 
--- Load APIs
-local tApis = fs.list( "/rom/redworks/apis" )
-for n,sFile in ipairs( tApis ) do
-	if not fs.isDir( sFile ) then
-		os.loadAPI( fs.combine( "/rom/redworks/apis", sFile ) )
-	end
-end
-
--- Do login code
-redworks.showLogo()
-local user,succ = redworks.doLogin()
-if not succ then
-	--Login failed
-	term.clear()
-	term.setCursorPos(1,5)
-	print("login failed.\n\nLocking terminal for 15 seconds")
-	local bExit=false
-	os.startTimer(15)
-	while not bExit do
-		falt, sEvent, param = pcall(os.pullEvent)
-		if sEvent == "timer" then
-			bExit = true
+if fs.isDir('/rom/autorun') then
+	local files = fs.list('/rom/autorun')
+	table.sort(files)
+	for k, file in ipairs(files) do
+		local path = fs.combine('/rom/autorun', file)
+		if not fs.isDir(path) then
+			shell.run(path)
 		end
 	end
-	os.shutdown()
-else
-	redworks.setUser(user)
 end
-
-term.clear()
-term.setCursorPos(1,1)
-print(os.version() .. " with Redworks "..redworks.version().." Terminal ID# " .. os.getComputerID())
-print("Welcome " .. redworks.getUser()..".".. " Current time is "..textutils.formatTime( os.time(), false ))
-term.setCursorPos(1,4)
