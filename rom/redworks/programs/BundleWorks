@@ -1,12 +1,32 @@
--- BundleWorks is a program to tell the computer which redpower 
--- wire to activate / deactivate.
--- colors such as: red,cyan,blue,lightgray,yellow etc. all 16 colors
--- reset: turns all the wires off.
--- all: turns all the wires on.
--- quit: quits the program.
--- Important: Bundleworks assumes you have the regular bundled cable, 
--- connected to the back of the computer for output. 
+--BundleWorks
+--Date created: 1/13/12
+--Version: 1.1
+--Author: FuzzyPurp aka streetstar5
+--Info: Built as a standalone, now part of Redworks.
 
+--[[ BundleWorks is a program to tell the computer which redpower wire to activate / deactivate.
+ 
+ colors such as: supports all 16 colors: red, yellow, 
+ green, blue, orange, gray purple, white pink, gray, 
+ lightbue, lightgray, magenta, cyan, brown, black.
+ 
+ reset: turns all the wires off.
+ all: turns all the wires on.
+ quit: quits the program, and shutdown.
+ 
+ Important: Bundleworks assumes you have the regular 
+ bundled cable, connected to the back of the computer for output. And the extension of color wire you choose.]]
+
+ 
+ --Functions
+function clear()
+term.clear()
+term.setCursorPos(1,1)
+end
+function clear2()
+term.clear()
+term.setCursorPos(1,5)
+end
 function light(color)
 if color=="red" then
 return colors.red,1
@@ -41,6 +61,12 @@ end
 if color=="gray" then
 return colors.gray,11
 end
+if color=="quit" then
+clear2()
+print ("Thank you for using FuzzyPurp's BundleWorks!\nHave a colorful day : )")
+sleep(2)
+os.shutdown()
+end
 if color=="lightgray" then
 return 256,12
 end
@@ -56,15 +82,8 @@ end
 if color=="black" then
 return colors.black,16
 end
-if color=="quit" then
-shell.run("clear")
-term.setCursorPos(1,3)
-textutils.slowPrint ("Thank you for using RedWorks BundleWorks!")
-sleep(1)
-os.shutdown()
-end
 if color=="reset" then
-return (redstone.getBundledOutput("back")*(-1))
+return (rs.getBundledOutput("back")*(-1))
 end
 if color=="all" then
 return (65535)
@@ -72,32 +91,38 @@ end
 return 0
 end
 
+---More Fire!!
 l={}
 for i=1, 16 do
 l[i]=0
 end
 
-term.clear()
-term.setCursorPos(1,1)
+clear()
 while true do
-write("Please define a Color ")
+term.setCursorPos(16,1)
+print"-BundleWorks- 1.0"
+redworks.showWindow(1,8,49,6,"-Choice of Color-","White| Orange| Magenta| LightBlue| Yellow| Lime| Pink| Gray| LightGray| Cyan| Purple| Blue| Brown| Green| Yellow| Black|   All|")
+term.setCursorPos(1,17)
+print("Type 'quit' to close, 'reset' all wires Off.")
+term.setCursorPos(1,3)
+write("Toggle which Colored Wire? ")
+term.setCursorPos(28,3)
+
 a=read()
 num,place=light(a,l)
+if num==rs.getBundledOutput("back")*(-1)  then
+rs.setBundledOutput("back", 0)
+clear2()
+print("All Colored Wires are now OFF!")
 
-if num==redstone.getBundledOutput("back")*(-1)  then
-redstone.setBundledOutput("back", 0)
-term.clear()
-term.setCursorPos(1,1)
-print("All the colors are now off")
 for i=1, 16 do
 l[i]=0
 end
 else
 if num==65535 then
-redstone.setBundledOutput("back", 65535)
-term.clear()
-term.setCursorPos(1,1)
-print("All the colors are now on")
+rs.setBundledOutput("back", 65535)
+clear2()
+print("All Colored Wires are now ON!")
 for i=1, 16 do
 l[i]=1
 end
@@ -110,18 +135,19 @@ else
 l[place]=0
 end
 if l[place]==0 then
-redstone.setBundledOutput("back", redstone.getBundledOutput("back")-num)
-term.clear()
-term.setCursorPos(1,1)
-print(a.." is now off")
+rs.setBundledOutput("back", rs.getBundledOutput("back")-num)
+clear2()
+print("Output for Wire: ".. string.upper(a) .." is now OFF.")
+print(newline)
 else
-redstone.setBundledOutput("back", redstone.getBundledOutput("back")+num)
-term.clear()
-term.setCursorPos(1,1)
-print(a.." is now on")
+rs.setBundledOutput("back", rs.getBundledOutput("back")+num)
+clear2()
+print("Output for Wire: ".. string.upper(a) .." is now ON.")
+print(newline)
 end
 else
-write("That is not a valid Color ")
+clear2()
+write("Nonsense. Please choose the available.")
 print(newline)
 end
 end
