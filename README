@@ -1,7 +1,18 @@
+!!!UNTIL GITHUB STOPS ACTING BUGGY IM HOSTING REDWORKS 1.20 and REDWORKS 1.20 FLOPPY VERSION ON MF!!!
+
+MAIN VERSION -->>http://www.mediafire.com/?uj17fb68clcdsy9
+FLOPPY VERSION -->> http://www.mediafire.com/?ddk3sjg8hx1kdr2
+
+FLOPPY version wil lallow you to have Redworks on just one terminal, good for SMP 
+if an OP doesnt want all computers with Redworksor if you would like to use 
+multiple OS that conflict with Redworks
+
 ----Installation. 
+Go to the download tab and get the latest zip.
 Extract the file. 
 You should have a rom folder. 
 Place that into your .minecraft/mods/computercraft/lua
+Do not remove the original rom folder, all you are doing is merging our rom folder with the original rom folder
 Overwrite should prompt for a help(s) file and startup file.
 Say yes and continue. 
 Have fun.
@@ -14,3 +25,32 @@ and other users from the Minecraft community. Please be respectable and mature.
 http://webchat.esper.net/?channels=#computercraft
 
 Official Redworks CC+RP2 server information is on our Homepage.
+
+Features
+
+-CIM now upgraded to CCIRC. Casper's Instant messenger, chat live with other CC users over the world both cross SSP/SMP
+
+-Custom login screen with username and password. Your able to secure down a terminal and keep it secure. Log in does not allow ctrl+t to bypass it.
+
+-Windows api lib included into Redworks, draw windows, text boxes, select windows, all with a single command
+
+-Class API easily create classes in LUA with inheritance
+
+-Rin’s API to help in making physic games.
+
+-Minepedia an encyclopedia of Minecraft
+
+-GameAPI libary and RedBundle Libary to help making programs easier
+
+-cc-get makes finding and installing new programs a snap, even in SMP
+
+-Custom Circuitry API make complex circuits easy for when you don’t have RP or need more control.
+current version includes about a dozen logic gates, tons more coming in future updates.
+
+-RedWord processor, a text editor and word processor which lets you write, edit, and save .txt files. 
+
+-Several new programs to make using and programing your computer a breeze
+
+-Tons of small tweaks to just make things easier to use.
+
+Floppy version coming soon!! 
