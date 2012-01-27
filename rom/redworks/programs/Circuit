@@ -8,6 +8,7 @@ while running do
 clear()
 print ("Which circuitry would you like?\n")
 shell.run( "ls", "/rom/redworks/programs/circuits/" )
+print()
 choice = io.read()
 choice = string.lower(choice)
 cname = choice	
@@ -112,7 +113,7 @@ else
 print ("\nA ["..cname.."] circuit has been installed successfully with default settings.\n")
 end
 
-print (" Type |=-= logic/"..cname.." =-=| to start the circuit. ")
+print (" Type [ logic/"..cname.." ] to run the circuit. ")
 
 table.remove (tLines , 1)
 table.remove (tLines , 1)

