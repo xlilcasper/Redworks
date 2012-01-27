@@ -1,23 +1,28 @@
+-- Copy the code below and paste it into a file, running that file will open CCIRC automatically.
+-----------------------------------------------------------------------
+-- ATTENTION IF YOU ARE LOOKING FOR THE REAL IRC, YOU CAN FIND IT HERE
+-- EsperNet #computercraft
+----------------------------------------------------------------------
+if not http then print( "Requires HTTP API" ) return end
 function find(text, match)
 _ = 1
 local _s = nil
 local _e = nil
 _len = string.len(match)
-	while true do
-	_t = string.sub(text, _ , _len + _ - 1)
-		if _t == match then
-		_s = _
-		_e = _ + _len - 1
-		break
-		end
-	_ = _ + 1
-	if _ > string.len(text) then break end
-	end
+while true do
+_t = string.sub(text, _ , _len + _ - 1)
+if _t == match then
+_s = _
+_e = _ + _len - 1
+break
+end
+_ = _ + 1
+if _ > string.len(text) then break end
+end
 if _s == nil then return nil else return _s, _e end
 end
-
-file = http.get("http://www.ccirc.byethost15.com/ccirc.php")
-a = file:readLine()  
+file = http.get("http://computercraft.info/ccirc/ccirc.php")
+a = file:readLine() 
 file:close()
 a = string.sub(a,2) .. "\\"
 z = ""
