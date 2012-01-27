@@ -1,0 +1,211 @@
+local session, nick
+
+local term_w, term_h = term.getSize()
+
+local function urlencode(msg)
+	local ok = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~"
+	local enc = ""
+	local fmt = "%%%02X"
+	for k = 1, msg:len() do
+		local ch = msg:sub(k, k)
+		if ok:find(ch, 1, true) then
+			enc = enc .. ch
+		else
+			enc = enc .. fmt:format(string.byte(ch))
+		end
+	end
+	return enc
+end
+
+local function getLastIndex()
+	local f = http.get("http://immibis.awardspace.biz/cc/iim/get.php")
+	local last = tonumber(f.readLine())
+	f.close()
+	return last
+end
+
+local function startSession()
+	local f = http.get("http://immibis.awardspace.biz/cc/iim/start.php?nick="..urlencode(nick))
+	local response = f.readLine()
+	f.close()
+	if response:sub(1,2) == "OK" then
+		session = response:sub(3)
+	else
+		print(response)
+	end
+end
+
+local function sendMessage(msg)
+	http.request("http://immibis.awardspace.biz/cc/iim/send.php?s="..urlencode(session).."&msg="..urlencode(msg))
+end
+
+local buffer = {}
+local typing = ""
+local typing_pos = 0
+local typing_scroll = 0
+local history_pos = 0
+local history = {}
+local lastChatIndex = getLastIndex()
+
+local function addLine(line)
+	if #buffer >= term_h - 1 then
+		table.remove(buffer, 1)
+	end
+	table.insert(buffer, line)
+end
+
+local function displayChat(msg)
+	while msg:len() > term_w do
+		addLine(msg:sub(1,term_w))
+		msg = msg:sub(term_w + 1)
+	end
+	addLine(msg)
+end
+
+local function updateCursor()
+	term.setCursorPos(typing_pos - typing_scroll + 3, term_h)
+end
+
+local function updateInputLine()
+	term.setCursorPos(1, term_h)
+	term.clearLine()
+	term.write("> " .. typing:sub(typing_scroll + 1))
+	updateCursor()
+end
+
+local function updateScreen()
+	for k = 1, term_h - 1 do
+		term.setCursorPos(1, k)
+		term.clearLine()
+		term.write(buffer[k] or "")
+	end
+	updateCursor()
+end
+
+local pollURL
+
+local function startPoll()
+	pollURL = "http://immibis.awardspace.biz/cc/iim/get.php?last=" .. lastChatIndex .. "&ping=" .. session
+	http.request(pollURL)
+end
+
+local function handlePollResponse(f)
+	local any = false
+	while true do
+		local line = f.readLine()
+		if line == nil then break end
+		if line == "EMPTY" then break end
+		if line == "END" then break end
+		local index = line:find(" ")
+		if index ~= nil then
+			local id = tonumber(line:sub(1, index-1))
+			local msg = line:sub(index+1)
+			lastChatIndex = id
+			displayChat(msg)
+			any = true
+		end
+	end
+	f.close()
+	if any then updateScreen() end
+end
+
+repeat
+	print("Enter your nickname: ")
+	nick = read()
+	startSession()
+until session ~= nil
+
+local function updateHScroll()
+	if typing_pos < typing_scroll + 4 and typing_pos > 4 then
+		typing_scroll = math.max(0, typing_pos - 4)
+		return true
+	elseif typing_pos > typing_scroll + term_w - 7 then
+		typing_scroll = typing_pos - term_w + 7
+		return true
+	else
+		return false
+	end
+end
+
+local function onInputLine(msg)
+	sendMessage(msg)
+end
+
+lastChatIndex = 0
+startPoll()
+term.setCursorBlink(true)
+updateScreen()
+updateInputLine()
+while true do
+	local evt, p1, p2 = os.pullEvent()
+	if evt == "http_failure" and p1 == pollURL then
+		displayChat("Network error")
+	elseif evt == "http_success" and p1 == pollURL then
+		handlePollResponse(p2)
+		startPoll()
+	elseif evt == "http_success" then
+		p2.close()
+	elseif evt == "char" then
+		typing = typing:sub(1, typing_pos)..p1..typing:sub(typing_pos + 1)
+		typing_pos = typing_pos + 1
+		updateHScroll()
+		updateInputLine()
+	elseif evt == "key" then
+		if p1 == 28 then
+			-- Enter
+			onInputLine(typing)
+			table.insert(history, typing)
+			typing = ""
+			typing_pos = 0
+			typing_scroll = 0
+			history_pos = #history
+			updateInputLine()
+		elseif p1 == 203 then
+			-- Left
+			if typing_pos > 0 then
+				typing_pos = typing_pos - 1
+				if updateHScroll() then
+					updateInputLine()
+				else
+					updateCursor()
+				end
+			end
+		elseif p1 == 205 then
+			-- Right
+			if typing_pos < typing:len() then
+				typing_pos = typing_pos + 1
+				if updateHScroll() then
+					updateInputLine()
+				else
+					updateCursor()
+				end
+			end
+		elseif p1 == 14 then
+			-- Backspace
+			if typing_pos > 0 then
+				typing = typing:sub(1, typing_pos-1) .. typing:sub(typing_pos+1)
+				typing_pos = typing_pos - 1
+				updateHScroll()
+				updateInputLine()
+			end
+		elseif p1 == 200 then
+			-- Up
+			if history_pos > 1 then
+				history_pos = history_pos - 1
+				typing = history[history_pos]
+				typing_pos = typing:len()
+				updateHScroll()
+				updateInputLine()
+			end
+		elseif p1 == 208 then
+			-- Down
+			if history_pos < #history then
+				history_pos = history_pos + 1
+				typing = history[history_pos]
+				typing_pos = typing:len()
+				updateHScroll()
+				updateInputLine()
+			end
+		end
+	end
+end

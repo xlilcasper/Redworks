@@ -63,7 +63,7 @@ return colors.gray,11
 end
 if color=="quit" then
 clear2()
-print ("Thank you for using FuzzyPurp's BundleWorks!\nHave a colorful day : )")
+print ("Thank you for using FuzzyPurp's BundleWorks!\n\nHave a colorful day : )")
 sleep(2)
 os.shutdown()
 end

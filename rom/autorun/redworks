@@ -3,8 +3,8 @@
 local path=":/rom/redworks/programs:/rom/redworks/libs"
 if http then path=path..":/rom/redworks/programs/http:/bin"end
 
-shell.setPath( ".:/rom/programs"..path )
-help.setPath( "rom/help:/rom/redworks/help/" )
+shell.setPath( ".:/rom/redworks/programs:/rom/programs"..path )
+help.setPath( "rom/redworks/help:/rom/help/" )
 shell.setAlias( "ls", "list" )
 shell.setAlias( "dir", "list" )
 shell.setAlias( "cp", "copy" )

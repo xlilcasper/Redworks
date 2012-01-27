@@ -3,7 +3,11 @@ local locked=false
 -- functions for making read only values
 
 function version()
-	return "1.01"
+	return "1.20"
+end
+
+function sprint(text)
+  textutils.slowPrint(text)
 end
 
 function waitForKey()
@@ -78,8 +82,8 @@ function doLogin() --returns true if login succeeds, false if it fails
 			if (numItems==0) then 
 				--no passwords, not first run, so exit with out login.
 				print(" ")
-				print("To secure this terminal use adduser username password")
-				sleep(4)
+				print("To secure this terminal use:\n\nadduser username password")
+				sleep(3)
 				return "",true
 			end
 			local ux,uy,px,py=8,8,8,10
