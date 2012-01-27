@@ -1,0 +1,28 @@
+local sPasswdPath = "ACCOUNTS.F"
+params = { ... }
+if #params < 2 then
+	error( "Usage: adduser <username> <password>" )
+end
+local tPasswd = { }
+
+if fs.exists( sPasswdPath ) then
+	print("File exists. Loading")
+	local file = io.open(sPasswdPath)
+	local sLine = file:read()
+	while sLine do
+		for k, v in string.gmatch(sLine, "(%w+)%s(%w+)") do
+			tPasswd[k]=v			
+		end
+		sLine = file:read()
+	end
+	file:close()
+end
+
+tPasswd[params[1]]=params[2]
+
+local file = io.open(sPasswdPath,"w")
+for user,pass in pairs(tPasswd) do
+	file:write(user .. " " .. pass .."\n")
+end
+file:close()
+print("User " .. params[1] .. " has been created.")
