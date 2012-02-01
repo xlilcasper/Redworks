@@ -1,4 +1,6 @@
--- BaseLine Variables
+
+<!-- saved from url=(0043)http://computercraft.info/programs/tutorial -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">-- BaseLine Variables
 CurrentChapter = 1
 CurrentSection = 1
 ChapterTitles = {
@@ -69,7 +71,7 @@ Chapter = {
 				 "Key Points in this Chapter:\n1. What is an IF statement\n2. The ELSE statement\n3. The ELSEIF statement\n4. Complex IF's",
 				 "5.1 - What is an IF statement.\n\nWe use IF statements to control the programs direction based on certain criteria that you define. Doing this allows us to do only certain things based on certain conditions.",
 				 "5.1 - What is an IF statement.\n\nif name == \"Bob\" then\nprint (\"Hello Again Bob\")\nend\n\nThe 1st line says, if the variable name is equal to \"Bob\" then enter this IF statement. The next line is the code that will run if name does equal Bob. The 3rd line says to end the IF statement, if the name was not Bob the program would skip to the line directly after end.",
-				 "5.1 - What is an IF statement.\n\nWe have many options in the IF statement, we could do:\nif x >= 1\nRemember we can't do that IF statement if x is a string x = \"1\".\nif name ~= \"Bob\"\nThe ~= option means is not equal too. This if statement would pass if the name was NOT Bob.",
+				 "5.1 - What is an IF statement.\n\nWe have many options in the IF statement, we could do:\nif x &gt;= 1\nRemember we can't do that IF statement if x is a string x = \"1\".\nif name ~= \"Bob\"\nThe ~= option means is not equal too. This if statement would pass if the name was NOT Bob.",
 				 "5.2 - The ELSE statement.\n\nSometimes we want to do 1 thing if our IF statement is true and something else if it's false.\nif name == \"Bob\" then\nprint (\"Hello Bob\")\nelse\nprint(\"Your not Bob\")\nend\n\n",
 				 "5.2 - The ELSE statement.\n\nNotice how their is only 1 end statement as the last line of the entire IF statement. The ELSE line is a part of the current IF statement.",
 				 "5.3 - The ELSEIF statement.\n\nSometimes we want to check for multiple outcomes inside an IF statement, we can achieve this using the ELSEIF statement. The key things to remember is that you still only need 1 end as the last line, because this is 1 full statement, and that you will need to include a then for an ELSEIF.",
@@ -87,7 +89,7 @@ Chapter = {
 				 "6.1 - What is a loop\n\nA loop is a section of code that will continually run until told otherwise. We use these to repeat the same code until we say otherwise.\n\nwhile true do\nend\n\nThis is a while loop that has no exit, it will continually run over and over again until the program crashes.",
 				 "6.2 - How to exit a loop\nSince we don't want our loops to run until they crash we have to give them a way to stop. We do this by using the BREAK command.The break command is mostly placed inside an IF statement as just placing it in the loop itself would break the loop right away.",
 				 "6.2 - How to exit a loop\n\nx = 0\nwhile true do\n     x = x + 1\n     if x == 10 then\n     break\n     end\nend\n\nNotice how are while statements have their own end? This would run the loop and continually add 1 to x until x == 10 then it will break out of the loop.",
-				 "6.3 - Different kinds of loops\n\nYou don't always need to use the BREAK command. You can also include a condition in the WHILE statement for how long to run the loop.\n\nx = 0\nwhile x < 10 do\nx = x + 1\nend\n\nWe could also end this early with a BREAK as well.",
+				 "6.3 - Different kinds of loops\n\nYou don't always need to use the BREAK command. You can also include a condition in the WHILE statement for how long to run the loop.\n\nx = 0\nwhile x &lt; 10 do\nx = x + 1\nend\n\nWe could also end this early with a BREAK as well.",
 				 "6.3 - Different kinds of loops\n\nHeck we don't even have to use the WHILE statement to create a loop.\n\nfor x = 0, 10, 1 do\nprint (x)\nend\n\nThe first line says - x starts at 0, and continues until 10, increasing by 1 every time we come back to this line.",
 				 "6.3 - Different kinds of loops\n\nSo using the for statement we could do.\n\nx = 5\nfor x, 50, 5 do\nprint (x)\nend\n\nThis would printout 5 then 10 then 15 ect ect until reaching 50.",
                  "6.4 - Practice What We've Learned!\n\nYou'll see a new option at the bottom of your screen now. You can press [SPACE] to continue onward to the next chapter, you can also press [ENTER] to run this chapters simulation.\nDon't worry, you won't hurt my feelings by not practicing.",
@@ -453,7 +455,7 @@ term.setCursorPos(1,1)
 	print "* Run the program."
 	print ""
 	print "quit   will exit the sim early."
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	if input == "quit" then break end
 	    --------------------------------
 		if stage == 1 then
@@ -494,7 +496,7 @@ term.setCursorPos(1,1)
 	print "You can type \"example\" at anytime to see the correct syntax."
 	print "quit   will exit the sim early."
 	print ""
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	    if input == "quit" then break end
 	    if input == "edit hello" then shell.run("edit", "tmptut") end
 		if input == "hello" then shell.run("tmptut") pressany() 
@@ -536,7 +538,7 @@ term.setCursorPos(1,1)
 	print "You can type \"example\" at anytime to see the correct syntax."
 	print "quit   will exit the sim early."
 	print ""
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	    if input == "quit" then break end
 		if input == "edit hello" then shell.run("edit", "tmptut") end
 		if input == "hello" then shell.run("tmptut") pressany() 
@@ -578,7 +580,7 @@ term.setCursorPos(1,1)
 	print "You can type \"example\" at anytime to see the correct syntax."
 	print "quit   will exit the sim early."
 	print ""
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	    if input == "quit" then break end
 		if input == "edit hello" then shell.run("edit", "tmptut") end
 		if input == "hello" then shell.run("tmptut") pressany() 
@@ -616,7 +618,7 @@ term.setCursorPos(1,1)
 	print "You can type \"example\" at anytime to see the correct syntax."
 	print "quit   will exit the sim early."
 	print ""
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	    if input == "quit" then break end
 		if input == "edit hello" then shell.run("edit", "tmptut") end
 		if input == "hello" then shell.run("tmptut") pressany() 
@@ -658,7 +660,7 @@ term.setCursorPos(1,1)
 	print "You can type \"example\" at anytime to see the correct syntax."
 	print "quit   will exit the sim early."
 	print ""
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	    if input == "quit" then break end
 		if input == "edit hello" then shell.run("edit", "tmptut") end
 		if input == "hello" then shell.run("tmptut") pressany() 
@@ -707,7 +709,7 @@ term.setCursorPos(1,1)
 	print "You can type \"example\" at anytime to see the correct syntax."
 	print "quit   will exit the sim early."
 	print ""
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	    if input == "quit" then break end
 		if input == "edit hello" then shell.run("edit", "tmptut") end
 		if input == "hello" then shell.run("tmptut") pressany() 
@@ -752,7 +754,7 @@ term.setCursorPos(1,1)
 	print "You can type \"example\" at anytime to see the correct syntax."
 	print "quit   will exit the sim early."
 	print ""
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	    if input == "quit" then break end
 		if input == "edit hello" then shell.run("edit", "tmptut") end
 		if input == "hello" then shell.run("tmptut") pressany() 
@@ -798,7 +800,7 @@ term.setCursorPos(1,1)
 	print "You can type \"example\" at anytime to see the correct syntax."
 	print "quit   will exit the sim early."
 	print ""
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	    if input == "quit" then break end
 		if input == "edit hello" then shell.run("edit", "tmptut") end
 		if input == "hello" then shell.run("tmptut") pressany() 
@@ -845,7 +847,7 @@ term.setCursorPos(1,1)
 	print "You can type \"example\" at anytime to see the correct syntax."
 	print "quit   will exit the sim early."
 	print ""
-	write (">") input = io.read()
+	write ("&gt;") input = io.read()
 	    if input == "quit" then break end
 		if input == "edit hello" then shell.run("edit", "tmptut") end
 		if input == "hello" then shell.run("tmptut") pressany() 
@@ -888,4 +890,4 @@ mainmenu()
 print "You don't need to thank me."
 print "Thank yourself for learning!"
 print "To learn more search online!"
-print "You can also type help <topic>!"
+print "You can also type help &lt;topic&gt;!"</pre></body><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style><link rel="stylesheet" type="text/css" href="data:text/css,"></html>
