@@ -29,12 +29,4 @@ fault, event, param1, param2, param3 = pcall(os.pullEvent)
 break end
 end
 
-term.clear()
-redworks.showLogo()
-redworks.doLogin()
-
-term.clear()
-term.setCursorPos(1,1)
-print(os.version() .. " with Redworks "..redworks.version().." Terminal ID# " .. os.getComputerID())
-print("Welcome" .. redworks.getUser()..".".. " Current time is "..textutils.formatTime( os.time(), false ))
-term.setCursorPos(1,4)
+os.reboot()
