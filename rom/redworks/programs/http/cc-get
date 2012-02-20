@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---- cc-get version 0.0.1
+--- cc-get version 0.1.0b2
 --- Created by DJRanger
 ---
 --- This is very experimental, use at your own risk
@@ -9,83 +9,96 @@
 ---
 ------------------------------------------------------------
 
-params = { ... }
+if http == nil then
+	print('Please enable the http api.')
+	print('Look for enableAPI_http=0 in .minecraft/config/ and change the zero to a one and then restart Minecraft')
+	return false
+end
+json = (loadfile("/rom/redworks/programs/cc-get-bin/dkjson.lua")())
+shell.run('cc-get-bin/params.lua')
+shell.run('cc-get-bin/package.lua')
 
-shell.run('cc-get-bin/json.lua')
+params = parse_params({...}, {version = '-v *([^ ]+)'})
 
-local urlBase = 'http://cc-get.djranger.com/cc/'
+urlBase = 'http://cc-get.djranger.com/beta/cc/'
 local action = params[1]
 
 if not fs.exists('/bin') then
 	fs.makeDir('/bin')
+	fs.makeDir('/bin/lib')
 end
 
-if not fs.exists('/bin/packages.json') then
-	file = fs.open('/bin/packages.json', 'w')
+if fs.exists('/bin/packages.json') then
+	fs.makeDir('/bin/lib');
+	fs.move('/bin/packages.json', '/bin/lib/packages.json')
+end
+
+if not fs.exists('/bin/lib/packages.json') then
+	file = fs.open('/bin/lib/packages.json', 'w')
 	file.write('{"packages": [], "installed": 0}')
 	file.close()
 end
 
-local file = fs.open('/bin/packages.json', 'r')
+local file = fs.open('/bin/lib/packages.json', 'r')
 local line = file.readLine()
-local data = ''
+data = ''
 
 while line do
 	data = data .. line
 	line = file.readLine()
 end
 
+function save_data()
+	file = fs.open('/bin/lib/packages.json', 'w')
+	file.write(json.encode(data))
+	file.close()
+end
+
 file.close()
-data = decode(data)
+data = json.decode(data)
+
 
 if not action then
 	-- No params, show some info about the program
-	print('cc-get version 0.0.2')
-	print('Usage: cc-get <action> [<program>]')
-	print('Actions:')
-		print("\tinstall <program>")
-		print("\tupdate")
-		print("\tremove <program>")
-		print("\tlist")
-		
+	shell.run('help', 'cc-get')
 elseif action == 'install' or action == 'remove' then
-	
 	name = params[2]
 	if not name then
 		print('Usage: cc-get ' .. action .. ' <program>')
 	
 	elseif action == 'install' then
-		package = decode( http.get(urlBase .. 'get/' .. name).readAll() )
-		if package['error'] then
-			print(package['error'])
-		else
-			term.write('Really install ' .. name .. '? y/n: ')
+		local status, package = Package.get(name, params.version)
+		if status then
+			local version = ''
+			if params.version then
+				version = ' version ' .. package.version
+			end
+			term.write('Really install ' .. name .. version .. '? y/n: ')
 			answer = read()
 			
 			if answer:sub(0,1) == 'y' then
-				data.installed = data.installed + 1
-			
-				file = fs.open('/bin/' .. name, 'w')
-				file.write( package.source)
-				file.close()
-				
-				data.packages[ package.name ] = package
-				data.packages[ package.name ].location = '/bin/' .. name
-				
-				print('Package ' .. name .. ' installed to ' .. data.packages[ package.name ].location)
+				status = package:install()
+				if status == true then
+					data.packages[ package.name ] = package
+					print( package.name ..' version ' .. package.version .. ' installed' )
+				else
+					pritn('Something went wrong installing ' .. package.name)
+				end
 			end
+		else
+			print(package)
 		end
 	elseif action == 'remove' then
-		if data.packages[ name ] then
+		local status, package = Package.load( name )
+		if status then
 			term.write('Really remove the package ' .. name .. '? y/n: ')
 			answer = read()
 			if answer:sub(0,1) == 'y' then
-				data.installed = data.installed - 1
-				fs.delete( data.packages[ package.name ].location )
-				print('The ' .. name .. ' package has been removed')
+				package:uninstall()
+				print('The ' .. package.name .. ' package has been removed')
 			end
 		else
-			print('Package ' .. name .. ' is not installed')
+			print(package)
 		end
 	end
 	
@@ -97,22 +110,22 @@ elseif action == 'update' then
 	
 	qs = qs:sub(0, -2)
 	
-	result = decode( http.get(urlBase .. 'info/' .. qs).readAll() )
+	result = json.decode( http.get(urlBase .. 'info/' .. qs).readAll() )
+	local updates = 0
 	
 	for name, info in pairs(result) do
 		if data.packages[ name ].timestamp < info.timestamp then
 			-- Need to update
-			print('Updating ' .. name .. ' from version ' .. data.packages[ name ].version .. ' to version ' .. info.version)
-			package = decode( http.get(urlBase .. 'get/' .. name).readAll() )
-			fs.delete( data.packages[ name ].location )
-			
-			file = fs.open(data.packages[ name ].location, 'w')
-			file.write(package.source)
-			file.close()
-			
-			data.packages[ name ].version = info.version
-			data.packages[ name ].timestamp = info.timestamp
+			print('Updating ' .. name .. ' from version ' .. data.packages[ name ].version .. ' to version ' .. info.version .. '...')
+			status, package = Package.load(name)
+			package:update()
+			print( package.name .. ' updated ')
+			updates = updates + 1
 		end
+	end
+	
+	if updates == 0 then
+		print('Nothing needs to be updated')
 	end
 elseif action == 'list' then
 	local i = 0
@@ -129,6 +142,4 @@ else
 	print('Unknown command "' .. action .. '"')
 end
 
-file = fs.open('/bin/packages.json', 'w')
-file.write(encode(data))
-file.close()
+save_data()
