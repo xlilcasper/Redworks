@@ -1,0 +1,3 @@
+if shell.path():match('/bin') == nil then
+	shell.setPath(shell.path() .. ':/bin')
+end
