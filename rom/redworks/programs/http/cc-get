@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---- cc-get version 0.1.0b2
+--- cc-get version 0.1.0
 --- Created by DJRanger
 ---
 --- This is very experimental, use at your own risk
@@ -8,6 +8,8 @@
 ---   .minecraft/mods/ComputerCraft/lua/rom/programs/ folder
 ---
 ------------------------------------------------------------
+
+VERSION = '0.1.0'
 
 if http == nil then
 	print('Please enable the http api.')
@@ -20,7 +22,7 @@ shell.run('cc-get-bin/package.lua')
 
 params = parse_params({...}, {version = '-v *([^ ]+)'})
 
-urlBase = 'http://cc-get.djranger.com/beta/cc/'
+urlBase = 'http://cc-get.djranger.com/cc/' .. VERSION .. '/'
 local action = params[1]
 
 if not fs.exists('/bin') then
@@ -35,7 +37,7 @@ end
 
 if not fs.exists('/bin/lib/packages.json') then
 	file = fs.open('/bin/lib/packages.json', 'w')
-	file.write('{"packages": [], "installed": 0}')
+	file.write('{"packages": {}, "installed": 0}')
 	file.close()
 end
 
@@ -79,6 +81,7 @@ elseif action == 'install' or action == 'remove' then
 			if answer:sub(0,1) == 'y' then
 				status = package:install()
 				if status == true then
+					package.source = nil
 					data.packages[ package.name ] = package
 					print( package.name ..' version ' .. package.version .. ' installed' )
 				else

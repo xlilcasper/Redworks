@@ -1,4 +1,4 @@
-cc-get version 0.1.0b2
+cc-get version 0.1.0
 Usage: cc-get <action> [<program>]
 Actions:
 	install <program>

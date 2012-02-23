@@ -100,7 +100,7 @@ end
 clear()
 while true do
 term.setCursorPos(16,1)
-print"-BundleWorks- 1.0"
+print"-BundleWorks- 1.1"
 redworks.showWindow(1,8,49,6,"-Choice of Color-","White| Orange| Magenta| LightBlue| Yellow| Lime| Pink| Gray| LightGray| Cyan| Purple| Blue| Brown| Green| Yellow| Black|   All|")
 term.setCursorPos(1,17)
 print("Type 'quit' to close, 'reset' all wires Off.")
