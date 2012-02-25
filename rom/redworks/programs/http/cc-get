@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---- cc-get version 0.1.0
+--- cc-get version 0.1.1
 --- Created by DJRanger
 ---
 --- This is very experimental, use at your own risk
@@ -9,7 +9,7 @@
 ---
 ------------------------------------------------------------
 
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 
 if http == nil then
 	print('Please enable the http api.')
@@ -42,23 +42,14 @@ if not fs.exists('/bin/lib/packages.json') then
 end
 
 local file = fs.open('/bin/lib/packages.json', 'r')
-local line = file.readLine()
-data = ''
-
-while line do
-	data = data .. line
-	line = file.readLine()
-end
+data = json.decode(file:readAll())
+file:close()
 
 function save_data()
 	file = fs.open('/bin/lib/packages.json', 'w')
 	file.write(json.encode(data))
 	file.close()
 end
-
-file.close()
-data = json.decode(data)
-
 
 if not action then
 	-- No params, show some info about the program
