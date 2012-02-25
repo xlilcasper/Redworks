@@ -338,8 +338,14 @@ end
 
 encode2 = function (value, indent, level, buffer, buflen, tables, globalorder)
   local valtype = type (value)
-  local valmeta = getmetatable (value)
-  valmeta = type (valmeta) == 'table' and valmeta -- only tables
+	local valmeta
+	if valtype == 'string' then
+		valmeta = ''
+	else
+		valmeta = getmetatable (value)
+	end
+  
+	valmeta = type (valmeta) == 'table' and valmeta -- only tables
   local valtojson = valmeta and valmeta.__tojson
   if valtojson then
     if tables[value] then
