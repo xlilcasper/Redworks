@@ -1,5 +1,5 @@
-
---Version 1.1
+--Made by kijzeer
+--Version 1.2
 
 term.setCursorBlink(true)
 local sNew = "|   [Make new file]    Open existing file   |"
@@ -21,14 +21,6 @@ local function fMenuXCor()
 	iMenuXCor = (w/2)-21
 end
 
-local function Home()
-term.clear()
-term.setCursorPos(1,1)
-print(os.version() .. " with Redworks "..redworks.version().." Terminal ID# " .. os.getComputerID())
-print("Welcome " .. redworks.getUser()..".".. " Current time is "..textutils.formatTime( os.time(), false ))
-term.setCursorPos(1,4)
-end
-
 local function fCheckDir()
 	if not fs.isDir("/files") then
 		fs.makeDir("/files")
@@ -48,6 +40,49 @@ local function fOpenNew()
 	table.insert(tLines, "")
 end
 
+local function fMenuNotExist()
+    term.clear()
+	term.setCursorBlink(false)
+	local sYesOrNo = sYes
+    term.setCursorPos(iMenuXCor,6)
+	write(" ___________________________________________")
+	term.setCursorPos(iMenuXCor,7)
+	write("|                                           |")
+	term.setCursorPos(iMenuXCor,8)
+	write("|         Error: File doesn't exist.        |")
+	term.setCursorPos(iMenuXCor,9)
+	write("|          Do you want to make it?          |")
+	term.setCursorPos(iMenuXCor,10)
+	write("|                                           |")
+	term.setCursorPos(iMenuXCor,11)
+	write(sYesOrNo)
+	term.setCursorPos(iMenuXCor,12)
+	write("|___________________________________________|")
+	repeat
+		local sEvent, param = os.pullEvent()
+		if sEvent == "key" then
+			param = tostring(param)
+			if param == "203" or param == "205" then
+				if sYesOrNo == sYes then
+					sYesOrNo = sNo
+					term.setCursorPos(iMenuXCor,11)
+					write(sYesOrNo)
+				elseif sYesOrNo == sNo then
+					sYesOrNo = sYes
+					term.setCursorPos(iMenuXCor,11)
+					write(sYesOrNo)
+				end
+			end
+		end
+	until param == "28"
+	if sYesOrNo == sYes then
+		bExit = false
+		fOpenNew()
+	elseif sYesOrNo == sNo then
+		bExit = true
+	end
+end
+
 local function fLoad()
 	sPath = shell.resolve(sFile)
 	if fs.exists( sPath ) then
@@ -59,50 +94,7 @@ local function fLoad()
 		end
 		file:close()
 	else
-		term.clear()
-		term.setCursorBlink(false)
-		local sYesOrNo = sYes
-		term.setCursorPos(iMenuXCor,6)
-		write(" ___________________________________________")
-		term.setCursorPos(iMenuXCor,7)
-		write("|                                           |")
-		term.setCursorPos(iMenuXCor,8)
-		write("|         Error: File doesn't exist.        |")
-		term.setCursorPos(iMenuXCor,9)
-		write("|          Do you want to make it?          |")
-		term.setCursorPos(iMenuXCor,10)
-		write("|                                           |")
-		term.setCursorPos(iMenuXCor,11)
-		write(sYesOrNo)
-		term.setCursorPos(iMenuXCor,12)
-		write("|___________________________________________|")
-		repeat
-			local sEvent, param = os.pullEvent()
-			if sEvent == "key" then
-				param = tostring(param)
-				if param == "203" or param == "205" then
-					if sYesOrNo == sYes then
-						sYesOrNo = sNo
-						term.setCursorPos(iMenuXCor,11)
-						write(sYesOrNo)
-					elseif sYesOrNo == sNo then
-						sYesOrNo = sYes
-						term.setCursorPos(iMenuXCor,11)
-						write(sYesOrNo)
-					end
-				end
-			end
-		until param == "28"
-		if sYesOrNo == sYes then
-			fOpenNew()
-		elseif sYesOrNo == sNo then
-			term.clear()
-			term.setCursorPos(1,1)
-			print("Returning to Main Menu...")
-			sleep(1)
-			fExitDir()
-			shell.run("redword")
-		end
+		fMenuNotExist()
 	end
 end
 
@@ -110,17 +102,17 @@ local function fMenuNew()
 	term.clear()
 	term.setCursorBlink(false)
 	term.setCursorPos(iMenuXCor,1)
-	print(" ___________________________________________")
+	write(" ___________________________________________")
 	term.setCursorPos(iMenuXCor,2)
-	print("|                                           |")
+	write("|                                           |")
 	term.setCursorPos(iMenuXCor,3)
-	print("|     How do you want to call the file?     |")
+	write("|     How do you want to call the file?     |")
 	term.setCursorPos(iMenuXCor,4)
-	print("|                                           |")
+	write("|                                           |")
 	term.setCursorPos(iMenuXCor,5)
-	print("|                                           |")
+	write("|                                           |")
 	term.setCursorPos(iMenuXCor,6)
-	print("|___________________________________________|")
+	write("|___________________________________________|")
 	term.setCursorPos(iMenuXCor+6,5)
 	sFile = io.read()
 	sFileExt = string.sub(sFile, -3)
@@ -163,14 +155,10 @@ local function fMenuNew()
 			end
 		until param == "28"
 		if sYesOrNo == sYes then
+			bExit = false
 			fLoad()
 		elseif sYesOrNo == sNo then
-			term.clear()
-			term.setCursorPos(1,1)
-			print("Returning to Main Menu...")
-			sleep(1)
-			fExitDir()
-			shell.run("redword")
+			bExit = true
 		end
 	else
 		fOpenNew()
@@ -204,9 +192,15 @@ local function fMenuOpen()
 	if sFileExt ~= ".txt" then
 		sFile = sFile..".txt"
 	end
-	
-	term.setCursorBlink(true)
-	fLoad()
+	sPath = shell.resolve(sFile)
+    local file = io.open( sPath , "r")
+		local sLine = file:read()
+		while sLine do
+			table.insert(tLines, sLine)
+			sLine = file:read()
+		end
+		file:close()
+    bExit = false
 end
 
 local function fMenuStart()
@@ -219,7 +213,7 @@ local function fMenuStart()
 	term.setCursorPos(iMenuXCor,7)
 	write("|                                           |")
 	term.setCursorPos(iMenuXCor,8)
-	write("| Welcome to the Redworks Word Processor, |")
+	write("| Welcome to the RedworksOS Word Processor, |")
 	term.setCursorPos(iMenuXCor,9)
 	write("|          what do you want to do?          |")
 	term.setCursorPos(iMenuXCor,10)
@@ -231,7 +225,7 @@ local function fMenuStart()
 	term.setCursorPos(iMenuXCor,13)
 	write("|         To access menu press Ctrl.        |")
 	term.setCursorPos(iMenuXCor,14)
-	write("|___________________________________________|\n")
+	write("|___________________________________________|")
 	repeat
 	local sEvent, param = os.pullEvent()
 	if sEvent == "key" then
@@ -257,19 +251,6 @@ local function fMenuStart()
 		fMenuNew()
 	end
 	term.setCursorBlink(true)
-end
-
-function fSave()
-	local file = io.open( sPath, "w" )
-	if file then
-		for n, sLine in ipairs( tLines ) do
-			file:write( sLine .. "\n" )
-		end
-		file:close()
-		bSave = true
-	else
-		bSave = false
-	end
 end
 
 local function fMenuExit()
@@ -318,24 +299,38 @@ local function fMenuExit()
 					sSaveOrQuit = sSave
 					term.setCursorPos(iMenuXCor,10)
 					write(sSaveOrQuit)
+				elseif param == 29 or param == 157 then
+					
 				end
 			end
 		end
+	until param == 28 or param == 29 or param == 157
+	while true do
+		if param == 29 or param == 157 then
+			break
+		elseif sSaveOrQuit == sSave then
+			fSave()
+			term.setCursorBlink(true)
+			bExit = false
+			break
+		elseif sSaveOrQuit == sQuit then
+			bExit = true
+			break
+		elseif sSaveOrQuit == sSaveAndQuit then
+			bExit = true
+			fSave()
+			break
+		end
+	end
+end
 
-	until param == 28
-	if sSaveOrQuit == sSave then
-		fSave()
-		bExit = false
-	elseif sSaveOrQuit == sQuit then
-	    fExitDir()
-		Home()
-		bExit = true
-	elseif sSaveOrQuit == sSaveAndQuit then
-		fSave()
-		fExitDir()
-		Home()
-		bExit = true
-		
+function fSave()
+	local file = io.open( sPath, "w" )
+	if file then
+		for n, sLine in ipairs( tLines ) do
+			file:write( sLine .. "\n" )
+		end
+		file:close()
 	end
 end
 
@@ -394,82 +389,153 @@ term.setCursorPos(x,y)
 term.setCursorBlink(true)
 fPrintText()
 while true do
-	local sEvent, param = os.pullEvent()
-	if sEvent == "key" then
-		if param == 200 then
-			if y > 1 then
-				y = y - 1
-				x = math.min( x, string.len( tLines[y] ) + 1 )
-				fSetCursor( x, y )
-			end
-		
-		elseif param == 208 then
-			if y < #tLines then
-					y = y + 1
+	if not bExit then
+		local sEvent, param = os.pullEvent()
+		if sEvent == "key" then
+			if param == 200 then
+				if y > 1 then
+					y = y - 1
 					x = math.min( x, string.len( tLines[y] ) + 1 )
 					fSetCursor( x, y )
-			end
-		
-		elseif param == 203 then
-			if x > 1 then
-				x = x - 1
-				fSetCursor( x, y )
-			end
-		
-		elseif param == 205 then
-			if x < string.len( tLines[y] ) + 1 then
-				x = x + 1
-				fSetCursor( x, y )
-			end
+				end
 			
-		elseif param == 14 then
-			 if x > 1 then
+			elseif param == 208 then
+				if y < #tLines then
+						y = y + 1
+						x = math.min( x, string.len( tLines[y] ) + 1 )
+						fSetCursor( x, y )
+				end
+			
+			elseif param == 203 then
+				if x > 1 then
+					x = x - 1
+					fSetCursor( x, y )
+				end
+			
+			elseif param == 205 then
+				if x < string.len( tLines[y] ) + 1 then
+					x = x + 1
+					fSetCursor( x, y )
+				end
+				
+			elseif param == 14 then
+				 if x > 1 then
+					local sLine = tLines[y]
+					tLines[y] = string.sub(sLine,1,x-2) .. string.sub(sLine,x)
+					fPrintLine()
+				
+					x = x - 1
+					fSetCursor( x, y )
+					
+				elseif y > 1 then
+					local sPrevLen = string.len( tLines[y-1] )
+					tLines[y-1] = tLines[y-1] .. tLines[y]
+					table.remove( tLines, y )
+					fPrintText()
+					
+					x = sPrevLen + 1
+					y = y - 1
+					fSetCursor( x, y )
+				end
+				
+			elseif param == 28 then
 				local sLine = tLines[y]
-				tLines[y] = string.sub(sLine,1,x-2) .. string.sub(sLine,x)
+				tLines[y] = string.sub(sLine,1,x-1)
+				table.insert( tLines, y+1, string.sub(sLine,x) )
+				fPrintText()
+				
+				x = 1
+				y = y + 1
+				fSetCursor( x, y )		
+				
+				
+			elseif param == 29 or param == 157 then
+				fMenuExit()
+				if bExit then
+					break
+				else
+					fPrintText()
+				end
+			
+			elseif param == 199 then
+				y = 1
+				x = string.len( tLines[y] ) + 1
+				fSetCursor(x, y)
+			
+			elseif param == 207 then
+				y = # tLines
+				x = string.len( tLines[y] ) + 1
+				fSetCursor(x, y)
+			
+			elseif param == 201 then
+				if y > h then
+					y = y - h
+				else
+					y = 1
+				end
+				
+				if y < 1 then
+					y = 1
+				end
+				
+				x = string.len( tLines[y] ) + 1
+				fSetCursor(x, y)
+			
+			elseif param == 209 then
+				if # tLines > h then
+					y = y + h
+				else
+					y = #tLines
+				end
+				
+				if y > # tLines then
+					y = #tLines
+				end
+				
+				x = string.len( tLines[y] ) + 1
+				fSetCursor(x, y)
+			
+			elseif param == 15 then
+				local sLine = tLines[y]
+				tLines[y] = string.sub(sLine,1,x-1) .. "    " .. string.sub(sLine,x)
 				fPrintLine()
 			
-				x = x - 1
-				fSetCursor( x, y )
-				
-			elseif y > 1 then
-				local sPrevLen = string.len( tLines[y-1] )
-				tLines[y-1] = tLines[y-1] .. tLines[y]
-				table.remove( tLines, y )
-				fPrintText()
-				
-				x = sPrevLen + 1
-				y = y - 1
-				fSetCursor( x, y )
+				x = x + 4
+				fSetCursor(x, y)
+                
+            elseif param == 211 then
+                if x < string.len(tLines[y]) + 1 then
+					local sLine = tLines[y]
+					tLines[y] = string.sub(sLine,1,x-1) .. string.sub(sLine,x+1)
+					fPrintLine()
+					fSetCursor( x, y )
+                
+                elseif x == string.len(tLines[y]) + 1 then
+					if y < #tLines then
+                        tLines[y] = tLines[y] .. tLines[y+1]
+                        table.remove( tLines, y + 1 )
+                        fPrintText()
+                        
+                        fSetCursor( x, y )
+                    end
+				end
+			
 			end
-			
-		elseif param == 28 then
-			local sLine = tLines[y]
-			tLines[y] = string.sub(sLine,1,x-1)
-			table.insert( tLines, y+1, string.sub(sLine,x) )
-			fPrintText()
-			
-			x = 1
-			y = y + 1
-			fSetCursor( x, y )		
-			
-			
-		elseif param == 29 then
-			fMenuExit()
-			if bExit then
-				break
-			else
-				fPrintText()
-			end
-		end
 
-	elseif sEvent == "char" then
-		local sLine = tLines[y]
-		tLines[y] = string.sub(sLine,1,x-1) .. param .. string.sub(sLine,x)
-		fPrintLine()
-	
-		x = x + string.len( param )
-		fSetCursor(x, y)
+		elseif sEvent == "char" then
+			local sLine = tLines[y]
+			tLines[y] = string.sub(sLine,1,x-1) .. param .. string.sub(sLine,x)
+			fPrintLine()
+		
+			x = x + string.len( param )
+			fSetCursor(x, y)
+		end
+	else
+		break
 	end
 end
+
 fExitDir()
-Home()
+term.clear()
+term.setCursorBlink(false)
+term.setCursorPos(1,1)
