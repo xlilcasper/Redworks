@@ -10,7 +10,7 @@ extra[1] = "The delay of pulse."
 
 
 -- Simple Timer
--- Created by: Streetstar5 aka FuzzyPurp
+-- Created by: FuzzyPurp
 
 local rRunning = true
 term.clear()
