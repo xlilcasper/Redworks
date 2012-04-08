@@ -6,7 +6,7 @@ output = {}
 extra = {}
 input[1] = "front"
 output[1] = "back"
-extra[1] = "The dealy of pulse."
+extra[1] = "The delay of pulse."
 
 
 -- Simple Timer
