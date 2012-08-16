@@ -30,7 +30,7 @@ while true do
  end 
  --Now on to the actual Logic gate.
 
- if rs.getInput(input[1]) == rs.getInput(input[2]) then
+ if rs.getInput(input[1]) and rs.getInput(input[2]) then
     rs.setOutput(output[1], true)
   else
     rs.setOutput(output[1], false)
