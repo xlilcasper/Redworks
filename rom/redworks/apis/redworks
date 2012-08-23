@@ -157,7 +157,7 @@ end
 
 --Helper functions
 
---XLC (XLilCaspers) Windows libary included with permissions. Access with redworks.showWindow,redworks.textBox, redworks.selectWindow...
+--XLC (XLilCaspers) Windows libary included with permissions. Access with redworks.showWindow, redworks.textBox, redworks.selectWindow...
 function rawWriteLoc(x,y,sText)
 	term.setCursorPos(x,y)
 	term.write(sText)
@@ -266,10 +266,25 @@ function textBox(x,y,len,size,focus,hideChar,default,disableTerm)
 	end
 end
 
-function tCopy(t)
-  local u = { }
-  for k, v in pairs(t) do u[k] = v end
-  return setmetatable(u, getmetatable(t))
+function tCopy (tOrig, tTwin)
+if not tTwin then tTwin = { } end
+local tStack = {{tOrig, tTwin}}
+local function copy (tTable, tTarget)
+if not getmetatable(tTarget) then setmetatable(tTarget, getmetatable(tTable)) end
+for k, v in pairs(tTable) do
+if type(v)~='table' then
+tTarget[k] = v
+else
+tTarget[k] = { }
+table.insert(tStack, {tTable[k], tTarget[k]})
+end
+end
+end
+while #tStack>0 do
+copy(tStack[1][1], tStack[1][2])
+table.remove(tStack, 1)
+end
+return tTwin
 end
 
 function showWindow(x,y,w,h,title,text)
